@@ -58,7 +58,6 @@ public class Write {
             Thread.sleep(1000);
 
             // CmdChangeRequest
-
             NodeId nodeIdCCR = new NodeId(6, "::Program:Cube.Command.CmdChangeRequest");
             boolean valCCR = true;
             client.writeValue(nodeIdCCR, DataValue.valueOnly(new Variant(valCCR)));
