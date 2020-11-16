@@ -60,7 +60,7 @@ public class Read {
                     Variant variantP0 = dataValueP0.getValue();
                     System.out.println("Variant = " + variantP0);
 
-                    int parameter0 = (int)variantP0.getValue();
+                    float parameter0 = (float)variantP0.getValue();
                     System.out.println("Parameter[0] = " + parameter0);
 
 
@@ -74,7 +74,7 @@ public class Read {
                     Variant variantP = dataValueP1.getValue();
                     System.out.println("Variant = " + variantP);
 
-                    int parameter1 = (int)variantP.getValue();
+                    float parameter1 = (float)variantP.getValue();
                     System.out.println("Parameter[0] = " + parameter1);
 
 
@@ -87,7 +87,7 @@ public class Read {
                     Variant variantP2 = dataValueP1.getValue();
                     System.out.println("Variant = " + variantP2);
 
-                    int parameter2 = (int)variantP.getValue();
+                    float parameter2 = (float)variantP.getValue();
                     System.out.println("Parameter[2] = " + parameter2);
 
 
