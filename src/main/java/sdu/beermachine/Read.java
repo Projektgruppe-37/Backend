@@ -24,6 +24,7 @@ public class Read {
                     OpcUaClient client = OpcUaClient.create(cfg.build());
                     client.connect().get();
 
+
                     // Read the MachSpeed value of the nodeID = ns6;s=::Program:Cube.Command.MachSpeed
                     NodeId nodeIdMS = new NodeId(6, "::Program:Cube.Command.MachSpeed");
 
@@ -35,6 +36,7 @@ public class Read {
 
                     float machspeed = (float)variantMS.getValue();
                     System.out.println("Machspeed = " + machspeed);
+
 
                     // Read the CntrlCmd value of the nodeID = ns6;s=::Program:Cube.Command.CntrlCmd
                     NodeId nodeIdCC = new NodeId(6, "::Program:Cube.Command.CntrlCmd");
@@ -58,7 +60,7 @@ public class Read {
                     Variant variantP0 = dataValueP0.getValue();
                     System.out.println("Variant = " + variantP0);
 
-                    int parameter0 = (int)variantP0.getValue();
+                    float parameter0 = (float)variantP0.getValue();
                     System.out.println("Parameter[0] = " + parameter0);
 
 
@@ -72,9 +74,8 @@ public class Read {
                     Variant variantP = dataValueP1.getValue();
                     System.out.println("Variant = " + variantP);
 
-                    int parameter1 = (int)variantP.getValue();
+                    float parameter1 = (float)variantP.getValue();
                     System.out.println("Parameter[0] = " + parameter1);
-
 
 
                     // Read Parameter[2] = amount of products in next batch value of the nodeID = ::Program:Cube.Command.Parameter[2].Value
@@ -86,9 +87,8 @@ public class Read {
                     Variant variantP2 = dataValueP1.getValue();
                     System.out.println("Variant = " + variantP2);
 
-                    int parameter2 = (int)variantP.getValue();
+                    float parameter2 = (float)variantP.getValue();
                     System.out.println("Parameter[2] = " + parameter2);
-
 
 
 
