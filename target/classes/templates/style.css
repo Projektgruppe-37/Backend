@@ -1,0 +1,75 @@
+body {
+    margin:0 !important;
+}
+
+.container-fluid {
+    font-family: 'Montserrat', sans-serif;
+    padding: unset !important;
+}
+
+.wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    max-width:90%;
+}
+
+.header {
+    background-color:#73C855;
+    width: 100%;
+    height:88px;
+}
+
+h1, h2, h3, h4, h5 {
+    text-align: center;
+}
+
+.button {
+    background-color:#73C855;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0px;
+}
+
+.SDU-logo {
+    float: right;
+}
+
+.ingredient-box {
+    background-color: lightgrey;
+    height: 354px;
+    width: 157px;
+}
+.maintainence-table {
+    float: right;
+}
+.maintainence-box {
+    background-color: red;
+    height: 354px;
+    width: 100%;
+}
+
+.overview {
+    margin-top:30px;
+}
+.controls {
+    margin-top:20px;
+}
+.data-oee {
+    margin-top:30px;
+}
+.data-box {
+    background-color:#73C855;
+}
+.fas, .fab {
+    padding-left: 5px;
+}
+
+.table td, .table th {
+    border-top: none !important;
+    text-align: center;
+}

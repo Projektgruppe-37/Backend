@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Machine</title>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/239c2de455.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="header">
+            <div class="row">
+                <div class="col justify-content-center">
+                    <h1>BEER MACHINE</h1>
+                </div>
+                <div class="col-md-auto">
+                    <h1>SDU</h1>
+                </div>
+            </div>
+        </div>
+
+    <div class="wrapper">
+        <div class="container-fluid controls"> 
+            <div class="container-fluid overview">
+            <div class="row">
+                <div class="col-xs list-group d-flex justify-content-center">
+                    <button class="button list-group-item" type="button">RESET</button>
+                    <button class="button list-group-item" type="button">START</button>
+                    <button class="button list-group-item" type="button">STOP</button>
+                    <button class="button list-group-item" type="button">ABORT</button>
+                    <button class="button list-group-item" type="button">CLEAR</button>
+                </div>
+                <div class="col-lg d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-md-auto ingredient-table">
+                            <h2>BARLEY</h2>
+                            <div class="ingredient-box"></div>
+                        </div>
+                        <div class="col-md-auto ingredient-table">
+                            <h2>HOPS</h2>
+                            <div class="ingredient-box"></div>
+                        </div>
+                        <div class="col-md-auto ingredient-table">
+                            <h2>MALT</h2>
+                            <div class="ingredient-box"></div>
+                        </div>
+                        <div class="col-md-auto ingredient-table">
+                            <h2>WHEAT</h2>
+                            <div class="ingredient-box"></div>
+                        </div>
+                        <div class="col-md-auto ingredient-table">
+                            <h2>YEAST</h2>
+                            <div class="ingredient-box"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto maintainence-table d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col">
+                        <h2>MT BAR</h2>
+                        <div class="maintainence-box"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+                  <div class="row controls">
+                    <div class="col d-flex justify-content-center">
+                      <div class="row">
+                          <div class="col">
+                              <h5>MachSpeec</h5>
+                            <input type="text" />
+                          </div>
+                          <div class="col">
+                            <h5>MachSpeec</h5>
+                            <input type="text" />
+                          </div>
+                          <div class="col">
+                            <h5>MachSpeec</h5>
+                            <input type="text" />
+                          </div>
+                          <div class="col">
+                            <h5>MachSpeec</h5>
+                            <input type="text" />
+                          </div>
+                          <div class="col">
+                            <h5>MachSpeec</h5>
+                            <input type="text" />
+                          </div>
+                          <div class="col">
+                            <h5>MachSpeec</h5>
+                            <input type="text" />
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="row data-oee">
+                    <div class="col-8 data-box">
+                        <table class="table">
+                            <tbody>
+                              <tr>
+                                <th scope="row">Temperature<i class="fas fa-thermometer-half"></i></th>
+                                <td>Batch ID<i class="fas fa-boxes"></i></td>
+                                <td>Produced<i class="fab fa-product-hunt"></i></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">temp here</th>
+                                <td>batch here</td>
+                                <td>produced here</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Humidity</th>
+                                <td>Amount to produce</td>
+                                <td>Acceptable products</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">humidity here</th>
+                                <td>Amount to produce here</td>
+                                <td>Acceptable products here</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Vibration</th>
+                                <td>Products per minute</td>
+                                <td>Deleted products</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Vibration here</th>
+                                <td>Products per minute here</td>
+                                <td>Deleted products here</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="col">
+                                
+                                <h4>OEE</h4>
+                                <div class="row justify-content-center">
+                                    <h5>OEE number here</h5>
+                                </div>
+                                
+                                
+                                    <h4>Print Batch Report</h4>
+                                    <div class="row justify-content-center">
+                                        <button class="button" type="button">Print Batch Report</button>
+                                    </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    </div>
+    
+</body>
+</html>
