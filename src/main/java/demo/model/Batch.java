@@ -14,9 +14,9 @@ public class Batch {
     private final int accepted_products;
     private final int defect_products;
     private final int mach_speed;
-    private final double humidity;
-    private final double temperature;
-    private final double vibration;
+    private final float humidity;
+    private final float temperature;
+    private final float vibration;
 
     public Batch(@JsonProperty("id") UUID id,
                  @JsonProperty("product_type") int product_type,
@@ -25,9 +25,9 @@ public class Batch {
                  @JsonProperty("accepted_products") int accepted_products,
                  @JsonProperty("defect_products") int defect_products,
                  @JsonProperty("mach_speed") int mach_speed,
-                 @JsonProperty("humidity") double humidity,
-                 @JsonProperty("temperature") double temperature,
-                 @JsonProperty("vibration") double vibration) {
+                 @JsonProperty("humidity") float humidity,
+                 @JsonProperty("temperature") float temperature,
+                 @JsonProperty("vibration") float vibration) {
 
         this.id = id;
         this.product_type = product_type;
@@ -69,15 +69,14 @@ public class Batch {
         return mach_speed;
     }
 
-    public double getHumidity() {
-        return humidity;
+    public float getHumidity() { return humidity;
     }
 
-    public double getTemperature() {
+    public float getTemperature() {
         return temperature;
     }
 
-    public double getVibration() {
+    public float getVibration() {
         return vibration;
     }
 }
