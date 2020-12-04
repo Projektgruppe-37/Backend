@@ -1,0 +1,11 @@
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/demo/dao/BatchDataAccessService.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/sdu/beermachine/Write.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/sdu/beermachine/Read.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/sdu/beermachine/Subscription.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/demo/dao/FakeBatchDataAccessService.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/demo/model/Batch.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/demo/api/BatchController.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/demo/service/BatchService.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/demo/DemoApplication.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/demo/WebController.java
+/home/mara816/Software/ICPS/Beer Machine/Backend/src/main/java/demo/dao/BatchDao.java
