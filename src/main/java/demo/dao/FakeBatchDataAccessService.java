@@ -1,3 +1,4 @@
+/*
 package demo.dao;
 
 import demo.model.Batch;
@@ -61,3 +62,4 @@ public class FakeBatchDataAccessService implements BatchDao{
                 .orElse(0);
     }
 }
+*/

@@ -64,7 +64,7 @@ public class BatchDataAccessService implements BatchDao {
     @Override
     public Optional<Batch> selectBatchById(UUID id) {
         final String sql = "SELECT id, product_type, amount, produced, accepted_products, " +
-                "defect_products, mach_speed, humidity, temperature, vibration WHERE id = ?";
+                "defect_products, mach_speed, humidity, temperature, vibration FROM data WHERE id = ?";
         Batch batch = jdbcTemplate.queryForObject(
                 sql,
                 new Object[]{id},
