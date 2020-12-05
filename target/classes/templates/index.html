@@ -74,9 +74,15 @@
                               <h5>Batch ID</h5>
                             <input type="text" />
                           </div>
+                          <script>
+                              let text = document.getElementById("machine_speed");
+                              text.addEventListener("machine_speed", () => {
+                                    fetch("http://localhost:8080/machine_speed/" + text.value)
+                                  });
+                          </script>
                           <div class="col">
                             <h5>Machine Speed</h5>
-                            <input type="text" />
+                            <input id="machine_speed" type="text" />
                           </div>
                           <div class="col">
                             <h5>Product amount</h5>
