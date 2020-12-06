@@ -5,9 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
 
 
 @Repository("postgres")
@@ -22,7 +26,7 @@ public class BatchDataAccessService implements BatchDao {
 
     @Override
     public int insertBatch(UUID batchId, Batch batch) {
-        final String sql = "INSERT INTO data (id, product_type, amount, produced, accepted_products, " +
+        @SuppressWarnings("SqlResolve") final String sql = "INSERT INTO data (id, product_type, amount, produced, accepted_products, " +
                 "defect_products, mach_speed, humidity, temperature, vibration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(
                 sql,
@@ -36,13 +40,14 @@ public class BatchDataAccessService implements BatchDao {
             batch.getHumidity(),
             batch.getTemperature(),
             batch.getVibration()
+           // batch.getCreated()
         );
 
     }
 
     @Override
     public List<Batch> selectAllBatches() {
-        final String sql = "SELECT id, product_type, amount, produced, accepted_products, " +
+        @SuppressWarnings("SqlResolve") final String sql = "SELECT id, product_type, amount, produced, accepted_products, " +
                 "defect_products, mach_speed, humidity, temperature, vibration FROM data";
         return jdbcTemplate.query(sql, (resultSet, i) -> {
                     UUID id = UUID.fromString(resultSet.getString("id"));
@@ -55,15 +60,16 @@ public class BatchDataAccessService implements BatchDao {
                     float humidity = resultSet.getFloat("humidity");
                     float temperature = resultSet.getFloat("temperature");
                     float vibration = resultSet.getFloat("vibration");
+            //        Timestamp created = resultSet.getTimestamp("created");
 
                     return new Batch(id, product_type, amount, produced, accepted_products,
-                            defect_products, mach_speed, humidity, temperature, vibration);
+                            defect_products, mach_speed, humidity, temperature, vibration /*, created*/);
         });
     }
 
     @Override
     public Optional<Batch> selectBatchById(UUID id) {
-        final String sql = "SELECT id, product_type, amount, produced, accepted_products, " +
+        @SuppressWarnings("SqlResolve") final String sql = "SELECT id, product_type, amount, produced, accepted_products, " +
                 "defect_products, mach_speed, humidity, temperature, vibration FROM data WHERE id = ?";
         Batch batch = jdbcTemplate.queryForObject(
                 sql,
@@ -79,16 +85,18 @@ public class BatchDataAccessService implements BatchDao {
                     float humidity = resultSet.getFloat("humidity");
                     float temperature = resultSet.getFloat("temperature");
                     float vibration = resultSet.getFloat("vibration");
+                //    LocalTime created = resultSet.getTime("created");
 
             return new Batch(batchId, product_type, amount, produced, accepted_products,
-                    defect_products, mach_speed, humidity, temperature, vibration);
+                    defect_products, mach_speed, humidity, temperature, vibration /*, created*/);
         });
         return Optional.ofNullable(batch);
     }
 
     @Override
     public int deleteBatchById(UUID id) {
-        return 0;
+        String sql = "DELETE FROM data WHERE id = ?";
+        return jdbcTemplate.update(sql, id);
     }
 
     @Override

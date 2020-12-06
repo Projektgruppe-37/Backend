@@ -2,7 +2,11 @@ package demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
+import org.flywaydb.core.internal.database.DatabaseExecutionStrategy;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalTime;
 import java.util.UUID;
 
 public class Batch {
@@ -17,6 +21,8 @@ public class Batch {
     private final float humidity;
     private final float temperature;
     private final float vibration;
+ //   private final Date created;
+
 
     public Batch(@JsonProperty("id") UUID id,
                  @JsonProperty("product_type") int product_type,
@@ -27,7 +33,9 @@ public class Batch {
                  @JsonProperty("mach_speed") int mach_speed,
                  @JsonProperty("humidity") float humidity,
                  @JsonProperty("temperature") float temperature,
-                 @JsonProperty("vibration") float vibration) {
+                 @JsonProperty("vibration") float vibration)
+               //  @JsonProperty("created") Date created)
+    {
 
         this.id = id;
         this.product_type = product_type;
@@ -39,6 +47,7 @@ public class Batch {
         this.humidity = humidity;
         this.temperature = temperature;
         this.vibration = vibration;
+       // this.created = created;
     }
 
     public UUID getId() {
@@ -79,5 +88,9 @@ public class Batch {
     public float getVibration() {
         return vibration;
     }
+/*
+    public LocalTime getCreated() {
+        return created;
+    }*/
 }
 

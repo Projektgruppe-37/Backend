@@ -9,4 +9,5 @@ CREATE TABLE data (
     amount INT NOT NULL,
     accepted_products INT,
     defect_products INT
+   -- created TIMESTAMP NOT NULL
 );

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RequestMapping("api/v1/batch")
+
 @RestController
 public class BatchController {
 
