@@ -74,16 +74,17 @@
                               <h5>Batch ID</h5>
                             <input type="text" />
                           </div>
-                          <script>
-                              let text = document.getElementById("machine_speed");
-                              text.addEventListener("machine_speed", () => {
-                                    fetch("http://localhost:8080/machine_speed/" + text.value)
-                                  });
-                          </script>
                           <div class="col">
                             <h5>Machine Speed</h5>
-                            <input id="machine_speed" type="text" />
+                            <input type="text" />
                           </div>
+                          <script>
+                              let text = document.querySelector("input");
+                              text.addEventListener("input", () => {
+                                  fetch("http://localhost:8080/setmachinespeed?machineSpeed=" + text.value)
+                                  .then(v => v.status == 200 ? v.text() : v.statusText)
+                              });
+                          </script>
                           <div class="col">
                             <h5>Product amount</h5>
                             <input type="text" />
@@ -107,6 +108,14 @@
                               </tr>
                               <tr>
                                 <th scope="row">temp here</th>
+                                  <script>
+                                      let output = document.querySelector("#output");
+                                      output.addEventListener("th", () => {
+                                          fetch("http://localhost:8080/getmachinespeed")
+                                              .then(v => v.status == 200 ? v.text() : v.statusText)
+                                              .then(v => output.textContent = v);
+                                      });
+                                  </script>
                                 <td>batch here</td>
                                 <td>produced here</td>
                               </tr>
