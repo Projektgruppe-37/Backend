@@ -10,31 +10,20 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
-import org.springframework.web.client.RestTemplate;
+
 
 public class Write {
 
     private static OpcUaClient client;
 
-    public Write() {
-        try {
-            configUa();
-            Thread.sleep(2000);
-            setValCCR(true);
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
     public static void main(String[] args) {
         try {
             configUa();
 
-            setMachSpeed(500);
+            setMachSpeed(200);
             setBatchId(1);
             setProductType(0);
-            setAmount(100);
+            setAmount(50);
             setCntrlCmd(2);
 
             Thread.sleep(2000);

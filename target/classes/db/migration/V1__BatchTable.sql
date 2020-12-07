@@ -8,6 +8,14 @@ CREATE TABLE data (
     mach_speed INT NOT NULL,
     amount INT NOT NULL,
     accepted_products INT,
-    defect_products INT
-   -- created TIMESTAMP NOT NULL
+    defect_products INT,
+    created TIMESTAMP NOT NULL
 );
+
+--CREATE TABLE overtime (
+--    id UUID NOT NULL PRIMARY KEY,
+--    humidity FLOAT,
+--    temperature FLOAT,
+--    vibration FLOAT
+--);
+
