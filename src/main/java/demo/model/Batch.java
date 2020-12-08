@@ -1,15 +1,27 @@
 package demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
+import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
+import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
+import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
+import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
+import sdu.beermachine.Read;
+
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
+
+
 
 public class Batch {
 
     private final UUID id;
     private final int product_type;
-    private final int amount;
-    private final int produced;
+    private int amount;
+    private int produced;
     private final int accepted_products;
     private final int defect_products;
     private final int mach_speed;
@@ -17,6 +29,9 @@ public class Batch {
     private final float temperature;
     private final float vibration;
     private Timestamp created;
+    static OpcUaClient client;
+    private Timer timer;
+    private Read read;
 
 
     public Batch(@JsonProperty("id") UUID id,
@@ -44,7 +59,26 @@ public class Batch {
         this.vibration = vibration;
         this.created = created;
     }
+/*
+    public static void configUa() {
 
+        try {
+
+            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
+
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
+
+            OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
+            cfg.setEndpoint(configPoint);
+
+            client = OpcUaClient.create(cfg.build());
+            client.connect().get();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+*/
 
     public UUID getId() {
         return id;
@@ -59,7 +93,12 @@ public class Batch {
     }
 
     public int getProduced() {
-        return produced;
+        read = new Read();
+        //configUa();
+        timer = new Timer();
+        timer.schedule(new Read(), 0, 1000);
+      return Integer.parseInt(read.toString());
+
     }
 
     public int getAcceptedProducts() {
@@ -88,5 +127,35 @@ public class Batch {
         created = new Timestamp(System.currentTimeMillis());
         return created;
     }
+
+ /*   @Override
+    public void run() {
+        try {
+            NodeId nodeIdAP = new NodeId(6, "::Program:product.produce_amount");
+            NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
+
+
+            DataValue dataValueAP = client.readValue(0, TimestampsToReturn.Both, nodeIdAP).get();
+            DataValue dataValueP = client.readValue(0, TimestampsToReturn.Both, nodeIdP).get();
+
+            Variant variantAP = dataValueAP.getValue();
+            Variant variantP = dataValueP.getValue();
+
+            amount = Integer.parseUnsignedInt(String.valueOf(variantAP.getValue()));
+            produced = Integer.parseInt(String.valueOf(variantP.getValue()));
+//            System.out.println("produced = " + produced);
+//            System.out.println(amount_produce);
+
+            if (produced == amount) {
+                timer.cancel();
+                timer.purge();
+                return;
+            }
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }*/
 }
 

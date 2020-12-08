@@ -1,7 +1,5 @@
 package sdu.beermachine;
 
-import java.util.List;
-
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
 import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
@@ -11,10 +9,12 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
 
+import java.util.List;
+
 
 public class Write {
 
-    private static OpcUaClient client;
+    static OpcUaClient client;
 
     public static void main(String[] args) {
         try {
@@ -23,7 +23,7 @@ public class Write {
             setMachSpeed(200);
             setBatchId(1);
             setProductType(0);
-            setAmount(50);
+            setAmount(100);
             setCntrlCmd(2);
 
             Thread.sleep(2000);
@@ -40,7 +40,6 @@ public class Write {
 
       List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
         //System.out.println("Endpoints = " + endpoints);
-
 
         EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
 

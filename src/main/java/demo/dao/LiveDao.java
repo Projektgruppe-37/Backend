@@ -1,4 +1,4 @@
-package demo.dao;
+/*package demo.dao;
 
 import demo.model.LiveData;
 
@@ -14,5 +14,5 @@ public interface LiveDao {
 
 }
 
-
+*/
 

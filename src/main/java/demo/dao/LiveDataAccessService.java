@@ -1,4 +1,4 @@
-package demo.dao;
+/*package demo.dao;
 
 
 import demo.model.LiveData;
@@ -21,3 +21,4 @@ public class LiveDataAccessService implements LiveDao {
     }
 }
 
+*/

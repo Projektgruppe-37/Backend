@@ -1,4 +1,4 @@
-package demo.model;
+/*package demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
@@ -10,7 +10,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
-import sdu.beermachine.Read;
+//import sdu.beermachine.Read;
 
 import java.util.List;
 import java.util.Timer;
@@ -95,3 +95,4 @@ public class LiveData extends TimerTask {
     }
 }
 
+*/

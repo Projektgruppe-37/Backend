@@ -1,4 +1,4 @@
-package demo.api;
+/*package demo.api;
 
 import demo.model.LiveData;
 import demo.service.LiveService;
@@ -25,3 +25,4 @@ public class LiveController {
         liveService.addLive(liveData);
     }
 }
+*/

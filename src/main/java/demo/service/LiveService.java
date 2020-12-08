@@ -1,4 +1,4 @@
-package demo.service;
+/*package demo.service;
 
 import demo.dao.LiveDao;
 import demo.model.LiveData;
@@ -21,4 +21,4 @@ public class LiveService {
     }
 }
 
-
+*/

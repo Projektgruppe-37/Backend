@@ -18,12 +18,11 @@ import java.util.TimerTask;
 
 public class Read extends TimerTask {
 
-    private static OpcUaClient client;
-   // private static UShort produced;
-    private static int produced;
- //   private static UShort amount_produce;
-    private static int amount_produce;
-    private static Timer timer;
+    static OpcUaClient client;
+
+    static int produced;
+    static int amount_produce;
+    static Timer timer;
 
 
     public static void configUa() {
@@ -57,8 +56,8 @@ public class Read extends TimerTask {
             System.out.println(e.getMessage());
         }
     }
-
 /*
+
     public static void getProduced() {
         try {
             NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
@@ -85,12 +84,18 @@ public class Read extends TimerTask {
         }
 */
 
+    @Override
+    public String toString() {
+        return String.valueOf(produced);
+    }
 
     @Override
     public void run() {
         //    int producedInt = Integer.parseUnsignedInt(String.valueOf(produced));
         //    int amount_produceInt = Integer.parseUnsignedInt(String.valueOf(amount_produce));
         try {
+            //    configUa();
+            //    timer = new Timer();
             NodeId nodeIdAP = new NodeId(6, "::Program:product.produce_amount");
             NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
 
@@ -109,14 +114,12 @@ public class Read extends TimerTask {
             produced = Integer.parseUnsignedInt(String.valueOf(variantP.getValue()));
             System.out.println("produced = " + produced);
             System.out.println(amount_produce);
-
-        //    if (produced.equals(amount_produce)) {
-                if(produced == amount_produce) {
+            //    if (produced.equals(amount_produce)) {
+            if (produced == amount_produce) {
                 timer.cancel();
                 timer.purge();
                 return;
             }
-
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
