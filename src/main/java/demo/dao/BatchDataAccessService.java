@@ -50,12 +50,12 @@ public class BatchDataAccessService implements BatchDao {
                 "defect_products, mach_speed, humidity, temperature, vibration, created FROM data";
         return jdbcTemplate.query(sql, (resultSet, i) -> {
                     UUID id = UUID.fromString(resultSet.getString("id"));
-                    int product_type = resultSet.getInt("product_type");
-                    int amount = resultSet.getInt("amount");
+                    float product_type = resultSet.getFloat("product_type");
+                    float amount = resultSet.getFloat("amount");
                     int produced = resultSet.getInt("produced");
                     int accepted_products = resultSet.getInt("accepted_products");
                     int defect_products = resultSet.getInt("defect_products");
-                    int mach_speed = resultSet.getInt("mach_speed");
+                    float mach_speed = resultSet.getFloat("mach_speed");
                     float humidity = resultSet.getFloat("humidity");
                     float temperature = resultSet.getFloat("temperature");
                     float vibration = resultSet.getFloat("vibration");
@@ -75,12 +75,12 @@ public class BatchDataAccessService implements BatchDao {
                 new Object[]{id},
                 (resultSet, i) -> {
                     UUID batchId = UUID.fromString(resultSet.getString("id"));
-                    int product_type = resultSet.getInt("product_type");
-                    int amount = resultSet.getInt("amount");
+                    float product_type = resultSet.getFloat("product_type");
+                    float amount = resultSet.getFloat("amount");
                     int produced = resultSet.getInt("produced");
                     int accepted_products = resultSet.getInt("accepted_products");
                     int defect_products = resultSet.getInt("defect_products");
-                    int mach_speed = resultSet.getInt("mach_speed");
+                    float mach_speed = resultSet.getFloat("mach_speed");
                     float humidity = resultSet.getFloat("humidity");
                     float temperature = resultSet.getFloat("temperature");
                     float vibration = resultSet.getFloat("vibration");
@@ -100,7 +100,7 @@ public class BatchDataAccessService implements BatchDao {
 
     @Override
     public int updateProducedById(UUID id, Batch batch) {
-        String sql = "UPDATE data SET produced = ? WHERE id = ?";
+        @SuppressWarnings("SqlResolve") String sql = "UPDATE data SET produced = ? WHERE id = ?";
         return jdbcTemplate.update(sql, batch, id);
     }
 }

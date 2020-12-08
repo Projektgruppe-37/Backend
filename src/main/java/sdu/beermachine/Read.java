@@ -1,48 +1,27 @@
-package sdu.beermachine;
+/*package sdu.beermachine;
 
+import demo.model.ConfigUa;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
 import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
-import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UShort;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
 
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 
-public class Read extends TimerTask {
 
-    static OpcUaClient client;
+public class Read extends ConfigUa {
 
     static int produced;
     public static int amount_produce;
-    //static Timer timer;
 
 
-    public static void configUa() {
-
-        try {
-
-            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
-
-            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
-
-            OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
-            cfg.setEndpoint(configPoint);
-
-            client = OpcUaClient.create(cfg.build());
-            client.connect().get();
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 /*
     public static void main(String[] args) {
 
@@ -88,7 +67,7 @@ public class Read extends TimerTask {
             }
 
         }
-*/
+
 
     @Override
     public String toString() {
@@ -144,3 +123,4 @@ public class Read extends TimerTask {
     }
 
 }
+*/

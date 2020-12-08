@@ -8,48 +8,43 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 
 import java.sql.Timestamp;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.UUID;
 
 
-
-public class Batch extends ConfigUa{
+public class Batch extends ConfigUa {
 
     private final UUID id;
-    private final int product_type;
-    public static int amount;
+    private float productType;
+    private float amount;
     static int produced;
-    private final int accepted_products;
-    private final int defect_products;
-    private final int mach_speed;
-    private final float humidity;
-    private final float temperature;
-    private final float vibration;
+    private int acceptedProducts;
+    private int defectProducts;
+    private float machSpeed;
+    private float humidity;
+    private float temperature;
+    private float vibration;
     private Timestamp created;
 
 
-
     public Batch(@JsonProperty("id") UUID id,
-                 @JsonProperty("product_type") int product_type,
-                 @JsonProperty("amount") int amount,
+                 @JsonProperty("product_type") float productType,
+                 @JsonProperty("amount") float amount,
                  @JsonProperty("produced") int produced,
-                 @JsonProperty("accepted_products") int accepted_products,
-                 @JsonProperty("defect_products") int defect_products,
-                 @JsonProperty("mach_speed") int mach_speed,
+                 @JsonProperty("accepted_products") int acceptedProducts,
+                 @JsonProperty("defect_products") int defectProducts,
+                 @JsonProperty("mach_speed") float machSpeed,
                  @JsonProperty("humidity") float humidity,
                  @JsonProperty("temperature") float temperature,
                  @JsonProperty("vibration") float vibration,
-                 @JsonProperty("created") Timestamp created)
-    {
+                 @JsonProperty("created") Timestamp created) {
 
         this.id = id;
-        this.product_type = product_type;
+        this.productType = productType;
         this.amount = amount;
         this.produced = produced;
-        this.accepted_products = accepted_products;
-        this.defect_products = defect_products;
-        this.mach_speed = mach_speed;
+        this.acceptedProducts = acceptedProducts;
+        this.defectProducts = defectProducts;
+        this.machSpeed = machSpeed;
         this.humidity = humidity;
         this.temperature = temperature;
         this.vibration = vibration;
@@ -58,82 +53,147 @@ public class Batch extends ConfigUa{
     }
 
 
-
     public UUID getId() {
         return id;
     }
 
-    public int getProductType() {
-        return product_type;
+    public float getProductType() {
+
+        try {
+
+            NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.Parameter[0].Value");
+            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            productType = (float) variant.getValue();
+
+            System.out.println("Product Type = " + productType);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return productType;
     }
 
-    public int getAmount() {
+    public float getAmount() {
+
+        try {
+
+            NodeId nodeId = new NodeId(6, "::Program:Cube.Status.Parameter[1].Value");
+            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            amount = (float) variant.getValue();
+
+            System.out.println("Amount = " + amount);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         return amount;
     }
 
     public int getProduced() {
+        try {
 
-        Timer timer = new Timer();
-        final TimerTask task = new TimerTask() {
+            NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.ProdProcessedCount");
+            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            produced = (int) variant.getValue();
 
+            System.out.println("Produced = " + produced);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-            @Override
-            public void run() {
-
-                try {
-
-
-                    NodeId nodeIdAP = new NodeId(6, "::Program:product.produce_amount");
-                    NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
-
-                    DataValue dataValueAP = client.readValue(0, TimestampsToReturn.Both, nodeIdAP).get();
-                    DataValue dataValueP = client.readValue(0, TimestampsToReturn.Both, nodeIdP).get();
-
-                    Variant variantAP = dataValueAP.getValue();
-                    Variant variantP = dataValueP.getValue();
-
-                    amount = Integer.parseUnsignedInt(String.valueOf(variantAP.getValue()));
-                    produced = Integer.parseUnsignedInt(String.valueOf(variantP.getValue()));
-
-                    System.out.println("produced = " + produced);
-
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-
-                    if (produced == amount) {
-                        timer.cancel();
-                        timer.purge();
-                        //return;
-
-                    }
-                }
-            };
-                timer.schedule(task, 0, 1000);
-
-      return produced;
+        return produced;
 
     }
 
     public int getAcceptedProducts() {
-        return accepted_products;
+
+        acceptedProducts = produced - defectProducts;
+        System.out.println("Accepted Products = " + acceptedProducts);
+
+        return acceptedProducts;
     }
 
     public int getDefectProducts() {
-        return defect_products;
+
+        try {
+
+            NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.ProdDefectiveCount");
+            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            defectProducts = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
+
+            System.out.println("Defect Products = " + defectProducts);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return defectProducts;
     }
 
-    public int getMachSpeed() {
-        return mach_speed;
+    public float getMachSpeed() {
+
+        try {
+
+            NodeId nodeId = new NodeId(6, "::Program:Cube.Status.MachSpeed");
+            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            machSpeed = (float) variant.getValue();
+
+            System.out.println("Machine Speed = " + machSpeed);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return machSpeed;
     }
 
-    public float getHumidity() { return humidity; }
+    public float getHumidity() {
+
+        try {
+
+            NodeId nodeId = new NodeId(6, "::Program:Cube.Status.Parameter[2].Value");
+            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            humidity = (float) variant.getValue();
+
+            System.out.println("Humidity = " + humidity);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return humidity;
+    }
 
     public float getTemperature() {
+
+        try {
+
+            NodeId nodeId = new NodeId(6, "::Program:Cube.Status.Parameter[3].Value");
+            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            temperature = (float) variant.getValue();
+
+            System.out.println("Temperature = " + temperature);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         return temperature;
     }
 
     public float getVibration() {
+
+        try {
+
+            NodeId nodeId = new NodeId(6, "::Program:Cube.Status.Parameter[4].Value");
+            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            vibration = (float) variant.getValue();
+
+            System.out.println("Vibration = " + vibration);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return vibration;
     }
 

@@ -15,7 +15,7 @@ public class Write extends ConfigUa {
 
             setMachSpeed(200);
             setBatchId(1);
-            setProductType(0);
+            setProductType(2);
             setAmount(250);
             setCntrlCmd(2);
 
