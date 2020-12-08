@@ -1,7 +1,9 @@
-/*package demo.dao;
+package demo.dao;
 
+import demo.model.Batch;
 import demo.model.LiveData;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface LiveDao {
@@ -11,8 +13,9 @@ public interface LiveDao {
         UUID id = UUID.randomUUID();
         return insertLive(id, liveData);
     }
+    List<LiveData> selectAllLive();
 
 }
 
-*/
+
 

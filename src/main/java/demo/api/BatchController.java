@@ -44,7 +44,7 @@ public class BatchController {
     }
 
     @PutMapping(path = "{id}")
-    public void updateBatch(@PathVariable("id") UUID id, @RequestBody Batch batchToUpdate) {
-        batchService.updateBatch(id, batchToUpdate);
+    public void updateProduced(@PathVariable("id") UUID id, @RequestBody Batch producedToUpdate) {
+        batchService.updateProduced(id, producedToUpdate);
     }
 }

@@ -94,12 +94,13 @@ public class BatchDataAccessService implements BatchDao {
 
     @Override
     public int deleteBatchById(UUID id) {
-        String sql = "DELETE FROM data WHERE id = ?";
+        @SuppressWarnings("SqlResolve") String sql = "DELETE FROM data WHERE id = ?";
         return jdbcTemplate.update(sql, id);
     }
 
     @Override
-    public int updateBatchById(UUID id, Batch batch) {
-        return 0;
+    public int updateProducedById(UUID id, Batch batch) {
+        String sql = "UPDATE data SET produced = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, batch, id);
     }
 }

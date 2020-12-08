@@ -1,4 +1,4 @@
-/*package demo.model;
+package demo.model;
 
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
@@ -10,10 +10,9 @@ import java.util.List;
 
 public abstract class ConfigUa {
 
- //   static OpcUaClient client;
+    public static OpcUaClient client;
 
-    public static void configUa(OpcUaClient client) {
-
+    public static void configUa() {
 
         try {
 
@@ -32,4 +31,3 @@ public abstract class ConfigUa {
         }
     }
 }
-*/

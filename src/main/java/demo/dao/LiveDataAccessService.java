@@ -1,4 +1,4 @@
-/*package demo.dao;
+package demo.dao;
 
 
 import demo.model.LiveData;
@@ -14,11 +14,13 @@ public class LiveDataAccessService implements LiveDao {
 
     @Override
     public int insertLive(UUID id, LiveData liveData) {
-        int x = Integer.parseUnsignedInt(String.valueOf(liveData.getProducedLive()));
-
-        DB.add(new LiveData(id, x));
+        DB.add(new LiveData(id, liveData.getProducedLive()));
     return 1;
+    }
+
+    @Override
+    public List<LiveData> selectAllLive() {
+        return DB;
     }
 }
 
-*/

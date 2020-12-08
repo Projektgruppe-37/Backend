@@ -21,8 +21,8 @@ public class Read extends TimerTask {
     static OpcUaClient client;
 
     static int produced;
-    static int amount_produce;
-    static Timer timer;
+    public static int amount_produce;
+    //static Timer timer;
 
 
     public static void configUa() {
@@ -43,20 +43,26 @@ public class Read extends TimerTask {
             System.out.println(e.getMessage());
         }
     }
-
+/*
     public static void main(String[] args) {
 
         try {
-            configUa();
+            //configUa();
             timer = new Timer();
             timer.schedule(new Read(), 0, 1000);
+
+            if (produced == amount_produce) {
+                timer.cancel();
+                timer.purge();
+                return;
+            }
 
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-/*
+
 
     public static void getProduced() {
         try {
@@ -89,32 +95,43 @@ public class Read extends TimerTask {
         return String.valueOf(produced);
     }
 
+    public String toString1(){
+        return String.valueOf(amount_produce);
+    }
+
+
+
+
     @Override
     public void run() {
         //    int producedInt = Integer.parseUnsignedInt(String.valueOf(produced));
         //    int amount_produceInt = Integer.parseUnsignedInt(String.valueOf(amount_produce));
         try {
-            //    configUa();
-            //    timer = new Timer();
-            NodeId nodeIdAP = new NodeId(6, "::Program:product.produce_amount");
-            NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
+                 configUa();
+                 Timer timer = new Timer();
 
 
-            DataValue dataValueAP = client.readValue(0, TimestampsToReturn.Both, nodeIdAP).get();
-            DataValue dataValueP = client.readValue(0, TimestampsToReturn.Both, nodeIdP).get();
-            //      System.out.println("\n" + "Produced:" + "\n" + "DataValue = " + dataValueP);
+          //  for (int i = 0; i <= amount_produce; i++) {
+                NodeId nodeIdAP = new NodeId(6, "::Program:product.produce_amount");
+                NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
 
-            Variant variantAP = dataValueAP.getValue();
-            Variant variantP = dataValueP.getValue();
-            //    System.out.println("Variant = " + variantMS);
 
-            //amount_produce = (UShort) variantAP.getValue();
-            amount_produce = Integer.parseUnsignedInt(String.valueOf(variantAP.getValue()));
-            // produced = (UShort) variantP.getValue();
-            produced = Integer.parseUnsignedInt(String.valueOf(variantP.getValue()));
-            System.out.println("produced = " + produced);
-            System.out.println(amount_produce);
-            //    if (produced.equals(amount_produce)) {
+                DataValue dataValueAP = client.readValue(0, TimestampsToReturn.Both, nodeIdAP).get();
+                DataValue dataValueP = client.readValue(0, TimestampsToReturn.Both, nodeIdP).get();
+                //      System.out.println("\n" + "Produced:" + "\n" + "DataValue = " + dataValueP);
+
+                Variant variantAP = dataValueAP.getValue();
+                Variant variantP = dataValueP.getValue();
+                //    System.out.println("Variant = " + variantMS);
+
+                //amount_produce = (UShort) variantAP.getValue();
+                amount_produce = Integer.parseUnsignedInt(String.valueOf(variantAP.getValue()));
+                // produced = (UShort) variantP.getValue();
+                produced = Integer.parseUnsignedInt(String.valueOf(variantP.getValue()));
+                System.out.println("produced = " + produced);
+                //    System.out.println(amount_produce);
+
+                //    if (produced.equals(amount_produce)) {
             if (produced == amount_produce) {
                 timer.cancel();
                 timer.purge();

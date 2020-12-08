@@ -1,12 +1,12 @@
-/*package demo.api;
+package demo.api;
 
+import demo.model.Batch;
 import demo.model.LiveData;
 import demo.service.LiveService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("api/v1/live")
 
@@ -20,9 +20,14 @@ public class LiveController {
         this.liveService = liveService;
     }
 
+    @GetMapping
+    public List<LiveData> getAllBatches() {
+        return liveService.getAllLive();
+    }
+
     @PostMapping
     private void addLive(@RequestBody LiveData liveData) {
         liveService.addLive(liveData);
     }
 }
-*/
+
