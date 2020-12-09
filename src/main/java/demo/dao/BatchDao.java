@@ -20,5 +20,6 @@ public interface BatchDao {
 
     int deleteBatchById(UUID id);
 
-    int updateBatchById(UUID id, Batch batch);
+    int updateProducedById(UUID id, Batch batch);
+
 }

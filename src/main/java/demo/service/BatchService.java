@@ -34,8 +34,9 @@ public class BatchService {
         return batchDao.deleteBatchById(id);
     }
 
-    public int updateBatch(UUID id, Batch newBatch) {
-        return batchDao.updateBatchById(id, newBatch);
+    public int updateProduced(UUID id, Batch newProduced) {
+        return batchDao.updateProducedById(id, newProduced);
 
     }
+
 }

@@ -3,4 +3,4 @@ app:
     jdbc-url: jdbc:postgresql://localhost:5432/beerMachine
     username: postgres
     password: root
-    poll-size: 30
+    poll-size: 100
