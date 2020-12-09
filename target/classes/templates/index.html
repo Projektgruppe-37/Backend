@@ -7,10 +7,14 @@
     <link th:href="@{/style.css}" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/239c2de455.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js" integrity="sha512-vv3EN6dNaQeEWDcxrKPFYSFba/kgm//IUnvLPMPadaUf5+ylZyx4cKxuc4HdBf0PPAlM7560DV63ZcolRJFPqA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js" integrity="sha512-gYUM+7JjtBqPPGOgwgOZ+NwjGl+11/EP124oB+ihjlBpLgP5LTh7R/Iwcdy//cgH+QzrjspBiJI5iUegTNww3w==" crossorigin="anonymous"></script>
+    <script th:href="@{/javascript.js}" rel="stylesheet"></script>
 </head>
+
 <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid overflow-hidden">
         <div class="header">
             <div class="row">
                 <div class="col justify-content-center">
@@ -27,11 +31,36 @@
             <div class="container-fluid overview">
             <div class="row">
                 <div class="col-xs list-group d-flex justify-content-center">
-                    <button class="button list-group-item" type="button">RESET</button>
-                    <button class="button list-group-item" type="button">START</button>
-                    <button class="button list-group-item" type="button">STOP</button>
-                    <button class="button list-group-item" type="button">ABORT</button>
-                    <button class="button list-group-item" type="button">CLEAR</button>
+                    <button id="resetBtn" class="button list-group-item" type="button">RESET</button>
+                    <script>
+                        document.getElementById("resetBtn").addEventListener("click", function() {
+                            fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 0);
+                        });
+                    </script>
+                    <button id="startBtn" class="button list-group-item" type="button">START</button>
+                    <script>
+                        document.getElementById("startBtn").addEventListener("click", function() {
+                            fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 2);
+                        });
+                    </script>
+                    <button id="stopBtn" class="button list-group-item" type="button">STOP</button>
+                    <script>
+                        document.getElementById("stopBtn").addEventListener("click", function() {
+                            fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 1);
+                        });
+                    </script>
+                    <button id="abortBtn" class="button list-group-item" type="button">ABORT</button>
+                    <script>
+                        document.getElementById("abortBtn").addEventListener("click", function() {
+                            fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 3);
+                        });
+                    </script>
+                    <button id="clearBtn" class="button list-group-item" type="button">CLEAR</button>
+                    <script>
+                        document.getElementById("clearBtn").addEventListener("click", function() {
+                            fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 4);
+                        });
+                    </script>
                 </div>
                 <div class="col-lg d-flex justify-content-center">
                     <div class="row">
@@ -76,23 +105,34 @@
                           </div>
                           <div class="col">
                             <h5>Machine Speed</h5>
-                            <input type="text" />
+                            <input id="machSpeed" type="text" />
                           </div>
                           <script>
-                              let text = document.querySelector("input");
-                              text.addEventListener("input", () => {
-                                  fetch("http://localhost:8080/setmachinespeed?machineSpeed=" + text.value)
-                                  .then(v => v.status == 200 ? v.text() : v.statusText)
+                              let machSpeed = document.querySelector("#machSpeed");
+                              machSpeed.addEventListener("input", () => {
+                                  fetch("http://localhost:8080/setmachinespeed?machineSpeed=" + machSpeed.value);
                               });
                           </script>
                           <div class="col">
                             <h5>Product amount</h5>
-                            <input type="text" />
+                            <input id="productAmount" type="text" />
                           </div>
+                          <script>
+                              let productAmount = document.querySelector("#productAmount");
+                              productAmount.addEventListener("input", () => {
+                                  fetch("http://localhost:8080/setproductamount?productAmount=" + productAmount.value);
+                              });
+                          </script>
                           <div class="col">
                             <h5>Product Type</h5>
-                            <input type="text" />
+                            <input id="productType" type="text" />
                           </div>
+                          <script>
+                              let productType = document.querySelector("#productType");
+                              productType.addEventListener("input", () => {
+                                  fetch("http://localhost:8080/setproducttype?productType=" + productType.value);
+                              });
+                          </script>
                       </div>
                     </div>
                   </div>
@@ -107,14 +147,38 @@
                                 <td>Produced<i class="fab fa-product-hunt"></i></td>
                               </tr>
                               <tr>
-                                <th scope="row">temp here</th>
+                                <th id="temp" scope="row">temp here</th>
                                   <script>
-                                      let output = document.querySelector("#output");
-                                      output.addEventListener("th", () => {
-                                          fetch("http://localhost:8080/getmachinespeed")
-                                              .then(v => v.status == 200 ? v.text() : v.statusText)
-                                              .then(v => output.textContent = v);
-                                      });
+                                      var getJSON = function(url, callback) {
+                                          var xhr = new XMLHttpRequest();
+                                          xhr.open('GET', url, true);
+                                          xhr.onload = function() {
+                                              var status = xhr.status;
+                                              if (status === 200) {
+                                                  callback(null, xhr.response);
+                                              } else {
+                                                  callback(status, xhr.response);
+                                              }
+                                          };
+                                          xhr.send();
+                                      };
+                                      window.setInterval(function(){
+                                      getJSON('http://localhost:8080/api/v1/batch',
+                                          function(err, data) {
+                                              let value;
+                                              if (err !== null) {
+                                                  console.log('Something went wrong: ' + err);
+                                              } else {
+                                                  value = JSON.parse(data);
+                                                  for(var i = 0; i < value.length; i++) {
+                                                      var obj = value[i];
+                                                      newValue = obj["vibration"];
+                                                  }
+                                                  console.log(newValue);
+                                                  document.getElementById('temp').innerHTML = newValue;
+                                              }
+                                          });
+                                      }, 5000);
                                   </script>
                                 <td>batch here</td>
                                 <td>produced here</td>
@@ -155,9 +219,9 @@
                                 
                                     <h4>Print Batch Report</h4>
                                     <div class="row justify-content-center">
-                                        <button class="button" type="button">Print Batch Report</button>
+                                        <button id="printReportBtn" class="button" type="button">Print Batch Report</button>
                                     </div>
-                                
+
                                 
                             </div>
                         </div>
@@ -173,5 +237,14 @@
     </div>
     
 </body>
+<script>
+    document.getElementById("printReportBtn").addEventListener("click", function() {
+        var docDefinition =  {
+            content:["hello world"
+            ]
+        }
+        pdfMake.createPdf(docDefinition).download();
+    });
+</script>
 </html>
 
