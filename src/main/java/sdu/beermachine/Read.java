@@ -1,5 +1,6 @@
-package sdu.beermachine;
+/*package sdu.beermachine;
 
+import demo.model.ConfigUa;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
 import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
@@ -8,91 +9,118 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
+import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
 
 import java.util.List;
-
-public class Read {
-    public static void main( String[] args )
-    {
-                try{
-                    List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
-                    System.out.println("Endpoints = " + endpoints);
-
-                    OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
-                    cfg.setEndpoint(endpoints.get(0));
-
-                    OpcUaClient client = OpcUaClient.create(cfg.build());
-                    client.connect().get();
+import java.util.Timer;
 
 
-                    // Read the MachSpeed value of the nodeID = ns6;s=::Program:Cube.Command.MachSpeed
-                    NodeId nodeIdMS = new NodeId(6, "::Program:Cube.Command.MachSpeed");
 
-                    DataValue dataValueMS = client.readValue(0, TimestampsToReturn.Both, nodeIdMS).get();
-                    System.out.println("\n" + "MachSpeed:" + "\n" + "DataValue = " + dataValueMS);
+public class Read extends ConfigUa {
 
-                    Variant variantMS = dataValueMS.getValue();
-                    System.out.println("Variant = " + variantMS);
-
-                    float machspeed = (float)variantMS.getValue();
-                    System.out.println("Machspeed = " + machspeed);
+    static int produced;
+    public static int amount_produce;
 
 
-                    // Read the CntrlCmd value of the nodeID = ns6;s=::Program:Cube.Command.CntrlCmd
-                    NodeId nodeIdCC = new NodeId(6, "::Program:Cube.Command.CntrlCmd");
+/*
+    public static void main(String[] args) {
 
-                    DataValue dataValueCC = client.readValue(0, TimestampsToReturn.Both, nodeIdCC).get();
-                    System.out.println("\n" + "CntrlCmd:" + "\n" + "DataValue = " + dataValueCC);
+        try {
+            //configUa();
+            timer = new Timer();
+            timer.schedule(new Read(), 0, 1000);
 
-                    Variant variantCC = dataValueCC.getValue();
-                    System.out.println("Variant = " + variantCC);
-
-                    int cntrlcmd = (int)variantCC.getValue();
-                    System.out.println("CntrlCmd = " + cntrlcmd);
-
-
-                    // Read Parameter[0] = batch ID value of the nodeID = ::Program:Cube.Command.Parameter[0].Value
-                    NodeId nodeIdP0 = new NodeId(6, "::Program:Cube.Command.Parameter[0].Value");
-
-                    DataValue dataValueP0 = client.readValue(0, TimestampsToReturn.Both, nodeIdP0).get();
-                    System.out.println("\n" + "Parameter[0]:" + "\n" + "DataValue = " + dataValueP0);
-
-                    Variant variantP0 = dataValueP0.getValue();
-                    System.out.println("Variant = " + variantP0);
-
-                    float parameter0 = (float)variantP0.getValue();
-                    System.out.println("Parameter[0] = " + parameter0);
-
-
-                    // Read Parameter[1] = product type value of the nodeID = ::Program:Cube.Command.Parameter[1].Value
-                    // 0: Pilsner, 1: Wheat, 2: IPA, 3: Stout, 4: Ale, 5: Alcohol free
-                    NodeId nodeIdP1 = new NodeId(6, "::Program:Cube.Command.Parameter[1].Value");
-
-                    DataValue dataValueP1 = client.readValue(0, TimestampsToReturn.Both, nodeIdP1).get();
-                    System.out.println("\n" + "Parameter[1]:" + "\n" + "DataValue = " + dataValueP1);
-
-                    Variant variantP = dataValueP1.getValue();
-                    System.out.println("Variant = " + variantP);
-
-                    float parameter1 = (float)variantP.getValue();
-                    System.out.println("Parameter[0] = " + parameter1);
-
-
-                    // Read Parameter[2] = amount of products in next batch value of the nodeID = ::Program:Cube.Command.Parameter[2].Value
-                    NodeId nodeIdP2 = new NodeId(6, "::Program:Cube.Command.Parameter[2].Value");
-
-                    DataValue dataValueP2 = client.readValue(0, TimestampsToReturn.Both, nodeIdP2).get();
-                    System.out.println("\n" + "Parameter[2]:" + "\n" + "DataValue = " + dataValueP2);
-
-                    Variant variantP2 = dataValueP1.getValue();
-                    System.out.println("Variant = " + variantP2);
-
-                    float parameter2 = (float)variantP.getValue();
-                    System.out.println("Parameter[2] = " + parameter2);
+            if (produced == amount_produce) {
+                timer.cancel();
+                timer.purge();
+                return;
+            }
 
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
+
+    public static void getProduced() {
+        try {
+            NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
+            DataValue dataValueP = client.readValue(0, TimestampsToReturn.Both, nodeIdP).get();
+            Variant variantP = dataValueP.getValue();
+            produced = (UShort) variantP.getValue();
+
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        }
+
+        public static void getAmountProduced(){
+            try {
+                NodeId nodeIdAP = new NodeId(6, "::Program:product.produce_amount");
+                DataValue dataValueAP = client.readValue(0, TimestampsToReturn.Both, nodeIdAP).get();
+                Variant variantAP = dataValueAP.getValue();
+                amount_produce = (UShort) variantAP.getValue();
+
+            }catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+        }
+
+
+    @Override
+    public String toString() {
+        return String.valueOf(produced);
+    }
+
+    public String toString1(){
+        return String.valueOf(amount_produce);
+    }
+
+
+
+
+    @Override
+    public void run() {
+        //    int producedInt = Integer.parseUnsignedInt(String.valueOf(produced));
+        //    int amount_produceInt = Integer.parseUnsignedInt(String.valueOf(amount_produce));
+        try {
+                 configUa();
+                 Timer timer = new Timer();
+
+
+          //  for (int i = 0; i <= amount_produce; i++) {
+                NodeId nodeIdAP = new NodeId(6, "::Program:product.produce_amount");
+                NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
+
+
+                DataValue dataValueAP = client.readValue(0, TimestampsToReturn.Both, nodeIdAP).get();
+                DataValue dataValueP = client.readValue(0, TimestampsToReturn.Both, nodeIdP).get();
+                //      System.out.println("\n" + "Produced:" + "\n" + "DataValue = " + dataValueP);
+
+                Variant variantAP = dataValueAP.getValue();
+                Variant variantP = dataValueP.getValue();
+                //    System.out.println("Variant = " + variantMS);
+
+                //amount_produce = (UShort) variantAP.getValue();
+                amount_produce = Integer.parseUnsignedInt(String.valueOf(variantAP.getValue()));
+                // produced = (UShort) variantP.getValue();
+                produced = Integer.parseUnsignedInt(String.valueOf(variantP.getValue()));
+                System.out.println("produced = " + produced);
+                //    System.out.println(amount_produce);
+
+                //    if (produced.equals(amount_produce)) {
+            if (produced == amount_produce) {
+                timer.cancel();
+                timer.purge();
+                return;
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
+*/
