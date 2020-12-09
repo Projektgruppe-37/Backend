@@ -6,9 +6,6 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 
 
-
-
-
 public class SetValues {
 
     public void setMachSpeed(float valMS) {

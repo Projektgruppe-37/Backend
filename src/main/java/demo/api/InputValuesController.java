@@ -1,14 +1,15 @@
-package demo.api;
+/*package demo.api;
 
 import demo.service.SetValues;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class InputValuesController {
 
-    @GetMapping("/setmachinespeed")
+    @PostMapping("/setmachinespeed")
     public String setMachineSpeed(@RequestParam float machineSpeed) {
         SetValues o = new SetValues();
         o.setMachSpeed(machineSpeed);
@@ -36,3 +37,4 @@ public class InputValuesController {
         return "index";
     }
 }
+*/

@@ -2,7 +2,6 @@ package demo.dao;
 
 import demo.model.Batch;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -43,6 +42,7 @@ public class BatchDataAccessService implements BatchDao {
                 batch.getCreated()
         );
     }
+
 
     @Override
     public List<Batch> selectAllBatches() {

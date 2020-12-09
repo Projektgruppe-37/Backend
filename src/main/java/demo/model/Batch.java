@@ -57,6 +57,7 @@ public class Batch {
         return id;
     }
 
+
     public float getProductType() {
 
         try {
@@ -91,8 +92,8 @@ public class Batch {
     }
 
     public int getProduced() {
-        try {
 
+        try {
             NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.ProdProcessedCount");
             DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
@@ -118,7 +119,6 @@ public class Batch {
     public int getDefectProducts() {
 
         try {
-
             NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.ProdDefectiveCount");
             DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
@@ -130,6 +130,7 @@ public class Batch {
         }
         return defectProducts;
     }
+
 
     public float getMachSpeed() {
 
