@@ -1,6 +1,5 @@
 package demo.api;
 
-import demo.model.Batch;
 import demo.model.LiveData;
 import demo.service.LiveService;
 import org.springframework.beans.factory.annotation.Autowired;

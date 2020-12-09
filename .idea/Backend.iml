@@ -29,6 +29,7 @@
     <orderEntry type="library" name="Maven: org.eclipse.milo:stack-client:0.5.0-M1" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.milo:stack-core:0.5.0-M1" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.milo:sdk-core:0.5.0-M1" level="project" />
+    <orderEntry type="library" name="pdfmake" level="application" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:2.2" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.milo:sdk-client:0.5.3" level="project" />

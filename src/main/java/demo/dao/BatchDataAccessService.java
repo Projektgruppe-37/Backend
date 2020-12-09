@@ -2,6 +2,7 @@ package demo.dao;
 
 import demo.model.Batch;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +10,6 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
 
 
 @Repository("postgres")
@@ -22,6 +22,7 @@ public class BatchDataAccessService implements BatchDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
     @Override
     public int insertBatch(UUID batchId, Batch batch) {
         @SuppressWarnings("SqlResolve") final String sql = "INSERT INTO data (id, product_type, amount, produced, accepted_products, " +
@@ -29,19 +30,18 @@ public class BatchDataAccessService implements BatchDao {
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(
                 sql,
-            batchId,
-            batch.getProductType(),
-            batch.getAmount(),
-            batch.getProduced(),
-            batch.getAcceptedProducts(),
-            batch.getDefectProducts(),
-            batch.getMachSpeed(),
-            batch.getHumidity(),
-            batch.getTemperature(),
-            batch.getVibration(),
-            batch.getCreated()
+                batchId,
+                batch.getProductType(),
+                batch.getAmount(),
+                batch.getProduced(),
+                batch.getAcceptedProducts(),
+                batch.getDefectProducts(),
+                batch.getMachSpeed(),
+                batch.getHumidity(),
+                batch.getTemperature(),
+                batch.getVibration(),
+                batch.getCreated()
         );
-
     }
 
     @Override
@@ -49,20 +49,20 @@ public class BatchDataAccessService implements BatchDao {
         @SuppressWarnings("SqlResolve") final String sql = "SELECT id, product_type, amount, produced, accepted_products, " +
                 "defect_products, mach_speed, humidity, temperature, vibration, created FROM data";
         return jdbcTemplate.query(sql, (resultSet, i) -> {
-                    UUID id = UUID.fromString(resultSet.getString("id"));
-                    float product_type = resultSet.getFloat("product_type");
-                    float amount = resultSet.getFloat("amount");
-                    int produced = resultSet.getInt("produced");
-                    int accepted_products = resultSet.getInt("accepted_products");
-                    int defect_products = resultSet.getInt("defect_products");
-                    float mach_speed = resultSet.getFloat("mach_speed");
-                    float humidity = resultSet.getFloat("humidity");
-                    float temperature = resultSet.getFloat("temperature");
-                    float vibration = resultSet.getFloat("vibration");
-                    Timestamp created = resultSet.getTimestamp("created");
+            UUID id = UUID.fromString(resultSet.getString("id"));
+            float product_type = resultSet.getFloat("product_type");
+            float amount = resultSet.getFloat("amount");
+            int produced = resultSet.getInt("produced");
+            int accepted_products = resultSet.getInt("accepted_products");
+            int defect_products = resultSet.getInt("defect_products");
+            float mach_speed = resultSet.getFloat("mach_speed");
+            float humidity = resultSet.getFloat("humidity");
+            float temperature = resultSet.getFloat("temperature");
+            float vibration = resultSet.getFloat("vibration");
+            Timestamp created = resultSet.getTimestamp("created");
 
-                    return new Batch(id, product_type, amount, produced, accepted_products,
-                            defect_products, mach_speed, humidity, temperature, vibration, created);
+            return new Batch(id, product_type, amount, produced, accepted_products,
+                    defect_products, mach_speed, humidity, temperature, vibration, created);
         });
     }
 
@@ -86,9 +86,9 @@ public class BatchDataAccessService implements BatchDao {
                     float vibration = resultSet.getFloat("vibration");
                     Timestamp created = resultSet.getTimestamp("created");
 
-            return new Batch(batchId, product_type, amount, produced, accepted_products,
-                    defect_products, mach_speed, humidity, temperature, vibration, created);
-        });
+                    return new Batch(batchId, product_type, amount, produced, accepted_products,
+                            defect_products, mach_speed, humidity, temperature, vibration, created);
+                });
         return Optional.ofNullable(batch);
     }
 

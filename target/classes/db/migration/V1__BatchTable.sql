@@ -12,10 +12,3 @@ CREATE TABLE data (
     created TIMESTAMP NOT NULL
 );
 
---CREATE TABLE overtime (
---    id UUID NOT NULL PRIMARY KEY,
---    humidity FLOAT,
---    temperature FLOAT,
---    vibration FLOAT
---);
-

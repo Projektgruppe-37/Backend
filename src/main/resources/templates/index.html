@@ -7,8 +7,8 @@
     <link th:href="@{/style.css}" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/239c2de455.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js" integrity="sha512-vv3EN6dNaQeEWDcxrKPFYSFba/kgm//IUnvLPMPadaUf5+ylZyx4cKxuc4HdBf0PPAlM7560DV63ZcolRJFPqA==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js" integrity="sha512-gYUM+7JjtBqPPGOgwgOZ+NwjGl+11/EP124oB+ihjlBpLgP5LTh7R/Iwcdy//cgH+QzrjspBiJI5iUegTNww3w==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js" integrity="sha512-vv3EN6dNaQeEWDcxrKPFYSFba/kgm//IUnvLPMPadaUf5+ylZyx4cKxuc4HdBf0PPAlM7560DV63ZcolRJFPqA==" crossorigin="anonymous"></script>
     <script th:href="@{/javascript.js}" rel="stylesheet"></script>
 </head>
 
@@ -220,6 +220,16 @@
                                     <h4>Print Batch Report</h4>
                                     <div class="row justify-content-center">
                                         <button id="printReportBtn" class="button" type="button">Print Batch Report</button>
+                                        <script>
+                                            document.getElementById("printReportBtn").addEventListener("click", function() {
+                                                const docDefinition = {
+                                                    content: ["batch data"
+
+                                                    ]
+                                                }
+                                                pdfMake.createPdf(docDefinition).download();
+                                            });
+                                        </script>
                                     </div>
 
                                 
@@ -237,14 +247,6 @@
     </div>
     
 </body>
-<script>
-    document.getElementById("printReportBtn").addEventListener("click", function() {
-        var docDefinition =  {
-            content:["hello world"
-            ]
-        }
-        pdfMake.createPdf(docDefinition).download();
-    });
-</script>
+
 </html>
 
