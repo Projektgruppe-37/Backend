@@ -31,48 +31,23 @@ public class LiveData extends ConfigUa {
         return id;
     }
 
-
     public int getProducedLive() {
-        Timer timer = new Timer();
 
-        final TimerTask task = new TimerTask() {
+        NodeId nodeIdAP = new NodeId(6, "::Program:product.produce_amount");
+        NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
 
+        //DataValue dataValueAP = client.readValue(0, TimestampsToReturn.Both, nodeIdAP).get();
+        //DataValue dataValueP = client.readValue(0, TimestampsToReturn.Both, nodeIdP).get();
 
-            @Override
-            public void run() {
+        //Variant variantAP = dataValueAP.getValue();
+        //Variant variantP = dataValueP.getValue();
 
-                try {
+        //amount = Integer.parseUnsignedInt(String.valueOf(variantAP.getValue()));
+        //produced = Integer.parseUnsignedInt(String.valueOf(variantP.getValue()));
 
-                    NodeId nodeIdAP = new NodeId(6, "::Program:product.produce_amount");
-                    NodeId nodeIdP = new NodeId(6, "::Program:product.produced");
-
-                    DataValue dataValueAP = client.readValue(0, TimestampsToReturn.Both, nodeIdAP).get();
-                    DataValue dataValueP = client.readValue(0, TimestampsToReturn.Both, nodeIdP).get();
-
-                    Variant variantAP = dataValueAP.getValue();
-                    Variant variantP = dataValueP.getValue();
-
-                    amount = Integer.parseUnsignedInt(String.valueOf(variantAP.getValue()));
-                    produced = Integer.parseUnsignedInt(String.valueOf(variantP.getValue()));
-
-                    System.out.println("produced = " + produced);
-
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-
-                if (produced == amount) {
-                    timer.cancel();
-                    timer.purge();
-                    //return;
-
-                }
-            }
-        };
-        timer.schedule(task, 0, 1000);
+        System.out.println("produced = " + produced);
 
         return produced;
-
     }
 }
 

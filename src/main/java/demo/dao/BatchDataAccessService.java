@@ -100,7 +100,7 @@ public class BatchDataAccessService implements BatchDao {
 
     @Override
     public int updateProducedById(UUID id, Batch batch) {
-        @SuppressWarnings("SqlResolve") String sql = "UPDATE data SET produced = ? WHERE id = ?";
+        @SuppressWarnings("SqlResolve") String sql = "UPDATE data SET amount = ? WHERE id = ?";
         return jdbcTemplate.update(sql, batch, id);
     }
 }

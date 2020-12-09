@@ -14,9 +14,11 @@ body {
 }
 
 .header {
+    font-weight: bold;
     background-color:#73C855;
     width: 100%;
-    height:88px;
+    height: auto;
+    border-bottom: black solid 1px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -72,4 +74,16 @@ h1, h2, h3, h4, h5 {
 .table td, .table th {
     border-top: none !important;
     text-align: center;
+}
+.printReportBox {
+    border: solid black 1px;
+}
+.data-box {
+    border: solid black 1px;
+}
+#resetBtn, #startBtn, #stopBtn, #abortBtn, #clearBtn {
+    text-transform: uppercase;
+}
+input {
+    border: solid 1px;
 }

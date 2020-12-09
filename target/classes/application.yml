@@ -2,5 +2,5 @@ app:
   datasource:
     jdbc-url: jdbc:postgresql://localhost:5432/beerMachine
     username: postgres
-    password: root
+    password: Farmor230200
     poll-size: 100
