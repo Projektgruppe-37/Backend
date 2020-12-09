@@ -1,6 +1,5 @@
 package demo.dao;
 
-import demo.model.Batch;
 import demo.model.LiveData;
 
 import java.util.List;

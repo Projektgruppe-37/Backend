@@ -11,12 +11,12 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 
-public class Batch extends ConfigUa {
+public class Batch {
 
     private final UUID id;
     private float productType;
     private float amount;
-    static int produced;
+    private int produced;
     private int acceptedProducts;
     private int defectProducts;
     private float machSpeed;
@@ -62,7 +62,7 @@ public class Batch extends ConfigUa {
         try {
 
             NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.Parameter[0].Value");
-            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             productType = (float) variant.getValue();
 
@@ -78,7 +78,7 @@ public class Batch extends ConfigUa {
         try {
 
             NodeId nodeId = new NodeId(6, "::Program:Cube.Status.Parameter[1].Value");
-            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             amount = (float) variant.getValue();
 
@@ -94,7 +94,7 @@ public class Batch extends ConfigUa {
         try {
 
             NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.ProdProcessedCount");
-            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             produced = (int) variant.getValue();
 
@@ -120,7 +120,7 @@ public class Batch extends ConfigUa {
         try {
 
             NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.ProdDefectiveCount");
-            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             defectProducts = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
@@ -136,7 +136,7 @@ public class Batch extends ConfigUa {
         try {
 
             NodeId nodeId = new NodeId(6, "::Program:Cube.Status.MachSpeed");
-            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             machSpeed = (float) variant.getValue();
 
@@ -153,7 +153,7 @@ public class Batch extends ConfigUa {
         try {
 
             NodeId nodeId = new NodeId(6, "::Program:Cube.Status.Parameter[2].Value");
-            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             humidity = (float) variant.getValue();
 
@@ -169,7 +169,7 @@ public class Batch extends ConfigUa {
         try {
 
             NodeId nodeId = new NodeId(6, "::Program:Cube.Status.Parameter[3].Value");
-            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             temperature = (float) variant.getValue();
 
@@ -186,7 +186,7 @@ public class Batch extends ConfigUa {
         try {
 
             NodeId nodeId = new NodeId(6, "::Program:Cube.Status.Parameter[4].Value");
-            DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             vibration = (float) variant.getValue();
 
@@ -201,6 +201,5 @@ public class Batch extends ConfigUa {
         created = new Timestamp(System.currentTimeMillis());
         return created;
     }
-
 }
 

@@ -5,14 +5,17 @@ import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
 import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
-
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
 import java.util.List;
 
-public abstract class ConfigUa {
-
+@Component
+public class ConfigUa {
     public static OpcUaClient client;
 
-    public static void configUa() {
+    @EventListener(ApplicationReadyEvent.class)
+    public void configUa() {
 
         try {
 
@@ -25,6 +28,7 @@ public abstract class ConfigUa {
 
             client = OpcUaClient.create(cfg.build());
             client.connect().get();
+
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
