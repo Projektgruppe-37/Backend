@@ -1,0 +1,13 @@
+
+m	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú•Ó˜8×™«Çä.
+l	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ª†O8×™«Çä.
+S
+java:S1874I"6Remove this use of "queryForObject"; it is deprecated.(¯æ–8×™«Çä.
+m	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†¾„ 8×™«Çä.
+r	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰®üÙşÿÿÿÿ8×™«Çä.
+m	java:S117Q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†¾„ 8×™«Çä.
+r	java:S117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰®üÙşÿÿÿÿ8×™«Çä.
+e
+java:S1128"HRemove this unused import 'org.springframework.context.annotation.Bean'.(‚î‰Ş8×™«Çä.
+m	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú•Ó˜8×™«Çä.
+l	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ª†O8×™«Çä.
