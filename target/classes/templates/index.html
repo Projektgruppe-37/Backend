@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/239c2de455.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js" integrity="sha512-gYUM+7JjtBqPPGOgwgOZ+NwjGl+11/EP124oB+ihjlBpLgP5LTh7R/Iwcdy//cgH+QzrjspBiJI5iUegTNww3w==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js" integrity="sha512-vv3EN6dNaQeEWDcxrKPFYSFba/kgm//IUnvLPMPadaUf5+ylZyx4cKxuc4HdBf0PPAlM7560DV63ZcolRJFPqA==" crossorigin="anonymous"></script>
-    <script th:href="@{/javascript.js}" rel="stylesheet"></script>
+    <script type="text/javascript" th:src="@{/javascript.js}"></script>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
     <div class="wrapper">
         <div class="container-fluid controls"> 
             <div class="container-fluid overview">
-            <div class="row" style="border-bottom: black solid 1px">
+            <div class="row">
                 <div class="col-xs list-group d-flex justify-content-center">
                     <button id="resetBtn" type="button" class="list-group-item">RESET</button>
 
@@ -81,38 +81,20 @@
                       <div class="row">
                           <div class="col">
                               <h5>Batch ID</h5>
-                            <input type="text" placeholder="ID of that batch..."/>
+                            <input id="batchID" type="text" placeholder="ID of that batch..."/>
                           </div>
                           <div class="col">
                             <h5>Machine Speed</h5>
                             <input id="machSpeed" placeholder="Speed of the machine..." type="text" />
                           </div>
-                          <script>
-                              let machSpeed = document.querySelector("#machSpeed");
-                              machSpeed.addEventListener("input", () => {
-                                  fetch("http://localhost:8080/setmachinespeed?machineSpeed=" + machSpeed.value);
-                              });
-                          </script>
                           <div class="col">
                             <h5>Product amount</h5>
                             <input id="productAmount" placeholder="Amount to produce..." type="text" />
                           </div>
-                          <script>
-                              let productAmount = document.querySelector("#productAmount");
-                              productAmount.addEventListener("input", () => {
-                                  fetch("http://localhost:8080/setproductamount?productAmount=" + productAmount.value);
-                              });
-                          </script>
                           <div class="col">
                             <h5>Product Type</h5>
                             <input id="productType" placeholder="Type of beer..." type="text" />
                           </div>
-                          <script>
-                              let productType = document.querySelector("#productType");
-                              productType.addEventListener("input", () => {
-                                  fetch("http://localhost:8080/setproducttype?productType=" + productType.value);
-                              });
-                          </script>
                       </div>
                     </div>
                   </div>
@@ -145,12 +127,14 @@
                                       window.setInterval(function(){
                                       getJSON('http://localhost:8080/api/v1/batch',
                                           function(err, data) {
-                                              let value;
+
+                                              var value;
+                                              var newValue;
                                               if (err !== null) {
                                                   console.log('Something went wrong: ' + err);
                                               } else {
                                                   value = JSON.parse(data);
-                                                  for(var i = 0; i < value.length; i++) {
+                                                  for (var i = 0; i < value.length; i++) {
                                                       var obj = value[i];
                                                       newValue = obj["vibration"];
                                                   }
@@ -195,24 +179,11 @@
                                 <div class="row justify-content-center">
                                     <h5>OEE number here</h5>
                                 </div>
-                                
-                                
                                     <h4>Print Batch Report</h4>
                                     <div class="row justify-content-center">
-                                        <button id="printReportBtn" class="btn btn-secondary" type="button">Print Batch Report</button>
-                                        <script>
-                                            document.getElementById("printReportBtn").addEventListener("click", function() {
-                                                const docDefinition = {
-                                                    content: ["batch data"
+                                        <button id="printReportBtn" class="btn btn-secondary" onclick="printPDF()" type="button">Print Batch Report</button>
 
-                                                    ]
-                                                }
-                                                pdfMake.createPdf(docDefinition).download();
-                                            });
-                                        </script>
                                     </div>
-
-                                
                             </div>
                         </div>
                     </div>
@@ -229,22 +200,66 @@
 </body>
 
 <script>
-    document.getElementById("resetBtn").addEventListener("click", function() {
-        fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 0);
-    });
-
     document.getElementById("startBtn").addEventListener("click", function() {
+        var batchID = document.querySelector("#batchID");
+        queryBatchID(batchID);
+        var machSpeed = document.querySelector("#machSpeed");
+        queryMachSpeed(machSpeed);
+        var productAmount = document.querySelector("#productAmount");
+        queryProductAmount(productAmount);
+        var productType = document.querySelector("#productType");
+        queryProductType(productType);
+
+        fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 2);
+
+        setTimeout(function () {
+            fetch("http://localhost:8080/setCCR?valCCR=" + true)
+        }, 3000)
+
+        setTimeout(function () {
         fetch("http://localhost:8080/api/v1/batch",
             {
-                method: 'UPDATE',
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({"amount": + productAmount.value})
+                body: JSON.stringify({})
             })
-        fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 2);
+        }, 17000)
+
+        setTimeout(function () {
+            batchID.value = 0;
+            machSpeed.value = 0;
+            productAmount.value = 0;
+            productType.value = 0;
+            document.querySelector("#batchID").value = "";
+            document.querySelector("#machSpeed").value = "";
+            document.querySelector("#productAmount").value = "";
+            document.querySelector("#productType").value = "";
+        }, 32000)
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", function() {
+        resetBatchID();
+        resetMachSpeed();
+        resetProductAmount();
+        resetProductType();
+        resetCntrlCmd();
+        resetCCR();
+        document.querySelector("#batchID").value = "";
+        document.querySelector("#machSpeed").value = "";
+        document.querySelector("#productAmount").value = "";
+        document.querySelector("#productType").value = "";
+
+        setTimeout(function () {
+            fetch("http://localhost:8080/setCCR?valCCR=" + true)
+        }, 3000)
     });
 
     document.getElementById("stopBtn").addEventListener("click", function() {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 1);
+
+        setTimeout(function () {
+            fetch("http://localhost:8080/setCCR?valCCR=" + true)
+        }, 3000)
     });
 
     document.getElementById("abortBtn").addEventListener("click", function() {
@@ -255,6 +270,5 @@
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 4);
     });
 </script>
-
 </html>
 

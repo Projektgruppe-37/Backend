@@ -24,6 +24,9 @@ body {
 h1, h2, h3, h4, h5 {
     text-align: center;
 }
+h2 {
+    text-underline: black;
+}
 
 .SDU-logo {
     float: right;
@@ -75,3 +78,17 @@ h1, h2, h3, h4, h5 {
 input {
     border: solid 1px;
 }
+.list-group-item {
+    margin-top: 15%;
+    background-color: black !important;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+.list-group-item:hover {
+    opacity: 80%;
+}
+button {
+    border-radius: unset !important;
+}
+

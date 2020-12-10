@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class InputValuesController {
 
+    @GetMapping("/setbatchID")
+    public String setBatchID(@RequestParam float batchID) {
+        SetValues o = new SetValues();
+        o.setBatchID(batchID);
+        return "index";
+    }
+
     @GetMapping("/setmachinespeed")
     public String setMachineSpeed(@RequestParam float machineSpeed) {
         SetValues o = new SetValues();
@@ -33,6 +40,13 @@ public class InputValuesController {
     public String setCntrlCmd(@RequestParam int cntrlcmd) {
         SetValues o = new SetValues();
         o.setCntrlCmd(cntrlcmd);
+        return "index";
+    }
+
+    @GetMapping("/setCCR")
+    public String setCCR(@RequestParam boolean valCCR) {
+        SetValues o = new SetValues();
+        o.setCCR(valCCR);
         return "index";
     }
 }
