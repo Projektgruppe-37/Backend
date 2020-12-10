@@ -1,6 +1,6 @@
 package demo.api;
 
-import demo.model.LiveData;
+import demo.model.Live;
 import demo.service.LiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +20,18 @@ public class LiveController {
     }
 
     @PostMapping
-    private void addLive(@RequestBody LiveData liveData) {
-        liveService.addLive(liveData);
+    private void addLive(@RequestBody Live live) {
+        liveService.addLive(live);
     }
 
     @GetMapping
-    public List<LiveData> getAllBatches() {
+    public List<Live> getAllBatches() {
         return liveService.getAllLive();
+    }
+
+    @DeleteMapping
+    public void deleteAllLive() {
+        liveService.deleteAllLive();
     }
 
 

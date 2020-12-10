@@ -37,7 +37,3 @@ Y
 +src/main/java/demo/service/LiveService.java,7/9/79849d8d84ac3e265ee14f408ae2e243619889f9
 \
 ,src/main/java/demo/service/BatchService.java,4/c/4cda467c366f87a4acf24775dfadfbce5bf05242
-`
-0src/main/java/demo/api/SimulationController.java,1/e/1eebde9b4a1722eda2ea073fb0460c4cd2d446ff
-g
-7src/main/java/demo/dao/SimulationDataAccessService.java,4/e/4e32eb810a614aa9af66ccf565b8d8a95aa4b782

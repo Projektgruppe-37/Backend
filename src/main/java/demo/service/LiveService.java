@@ -1,7 +1,7 @@
 package demo.service;
 
 import demo.dao.LiveDao;
-import demo.model.LiveData;
+import demo.model.Live;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,17 @@ public class LiveService {
         this.liveDao = liveDao;
     }
 
-    public int addLive(LiveData liveData) {
-        return liveDao.insertLive(liveData);
+    public int addLive(Live live) {
+        return liveDao.insertLive(live);
     }
 
-    public List<LiveData> getAllLive(){
+    public List<Live> getAllLive(){
         return liveDao.selectAllLive();
     }
-}
+
+    public List<Live> deleteAllLive() {
+        return liveDao.deleteLive();
+
+    }}
 
 

@@ -14,7 +14,7 @@ import java.util.UUID;
 public class Batch {
 
     private final UUID id;
-    private float batchId;
+    private int batchId;
     private float productType;
     private float amount;
     private int produced;
@@ -28,7 +28,7 @@ public class Batch {
 
 
     public Batch(@JsonProperty("id") UUID id,
-                 @JsonProperty("batch_id") float batchId,
+                 @JsonProperty("batch_id") int batchId,
                  @JsonProperty("product_type") float productType,
                  @JsonProperty("amount") float amount,
                  @JsonProperty("produced") int produced,
@@ -60,14 +60,13 @@ public class Batch {
         return id;
     }
 
-    public float getBatchId() {
+    public int getBatchId() {
         try {
 
-            NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.Parameter[0].Value");
+            NodeId nodeId = new NodeId(6, "::Program:batch_id");
             DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
-            batchId = (float) variant.getValue();
-
+            batchId = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
     //        System.out.println("Product Type = " + batchId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -111,10 +110,10 @@ public class Batch {
     public int getProduced() {
         try {
 
-            NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.ProdProcessedCount");
+            NodeId nodeId = new NodeId(6, "::Program:product.produced");
             DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
-            produced = (int) variant.getValue();
+            produced = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
     //        System.out.println("Produced = " + produced);
         } catch (Exception e) {
