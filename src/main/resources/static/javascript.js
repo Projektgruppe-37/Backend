@@ -30,6 +30,8 @@ pdfArray[6] = 0;
 pdfArray[7] = 0;
 pdfArray[8] = 0;
 
+var body = [];
+var counter = 0;
 var getJSON = function (url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -64,6 +66,7 @@ window.setInterval(function () {
             } else {
                 value = JSON.parse(data);
                 for (let i = 0; i < value.length; i++) {
+                    let counter = 0;
                     let obj = value[i];
                     batch_id = obj["batch_id"];
                     pdfArray.splice(0, 1, batch_id)
@@ -83,8 +86,13 @@ window.setInterval(function () {
                     pdfArray.splice(7, 1, temperature);
                     vibration = obj["vibration"];
                     pdfArray.splice(8, 1, vibration);
-
                 }
+
+                const row = "[ "+counter + 0.25+" ]" + ", ";
+
+                body.push(row);
+
+
                 document.getElementById('batch_id').innerHTML = batch_id;
                 document.getElementById('mach_speed').innerHTML = mach_speed;
                 document.getElementById('amount').innerHTML = amount;
@@ -111,38 +119,15 @@ window.setInterval(function () {
         });
 }, 250);
 
-function printPDF() {
-
-    const docDefinition = {
-        content: [
-            {text: 'Batch Report', fontSize: 20},
-            {
-                ul: [
-                    'batch_id ' + pdfArray[0],
-                    'amount ' + pdfArray[1],
-                    'produced ' + pdfArray[2],
-                    'mach_speed ' + pdfArray[3],
-                    'accepted_products ' + pdfArray[4],
-                    'defect_products ' + pdfArray[5],
-                    'humidity ' + pdfArray[6],
-                    'temperature ' + pdfArray[7],
-                    'vibration ' + pdfArray[8],
-                ], fontSize: 15
-            }
-        ]
-    }
-    pdfMake.createPdf(docDefinition).download();
-}
-
 window.setInterval(function () {
     getJSON('http://localhost:8080/api/v1/live',
         function (err, data) {
-            let barley;
+            var barley;
             let hops;
             let malt;
             let wheat;
             let yeast;
-            let mtbar;
+            let maintenance;
             let value;
             if (err !== null) {
                 console.log('Something went wrong: ' + err);
@@ -155,18 +140,56 @@ window.setInterval(function () {
                     malt = obj["malt"];
                     wheat = obj["wheat"];
                     yeast = obj["yeast"];
-                    mtbar = obj["mtbar"];
+                    maintenance = obj["maintenance"];
 
-                    /*   if () {
-                         document.getElementById('barley').style.backgroundColor = "green";
-                       document.getElementById('hops').style.backgroundColor = "green";
-                       document.getElementById('malt').style.backgroundColor = "green";
-                       document.getElementById('wheat').style.backgroundColor = "green";
-                       document.getElementById('yeast').style.backgroundColor = "green";
-                       document.getElementById('mtbar').style.backgroundColor = "green";
-                       }*/
+                    barley = Math.round(barley/35000*100)+"%";
+                    hops = Math.round(hops/35000*100)+"%";
+                    malt = Math.round(malt/35000*100)+"%";
+                    wheat = Math.round(wheat/35000*100)+"%";
+                    yeast = Math.round(yeast/35000*100)+"%";
+                    maintenance = Math.round(maintenance/35000*100)+"%";
+
+                    document.getElementById('barley').innerHTML = barley;
+                    document.getElementById('hops').innerHTML = hops;
+                    document.getElementById('malt').innerHTML = malt;
+                    document.getElementById('wheat').innerHTML = wheat;
+                    document.getElementById('yeast').innerHTML = yeast;
+                    document.getElementById('mtbar').innerHTML = maintenance;
+
                 }
             }
         })
 }, 1000);
 
+function printPDF() {
+    console.log(body);
+    var docDefinition = {
+        content: [
+            {
+                text: 'Batch Report', fontSize: 20
+            },
+            {
+                ul: [
+                    'batch_id ' + pdfArray[0],
+                    'amount ' + pdfArray[1],
+                    'produced ' + pdfArray[2],
+                    'mach_speed ' + pdfArray[3],
+                    'accepted_products ' + pdfArray[4],
+                    'defect_products ' + pdfArray[5],
+                    'humidity ' + pdfArray[6],
+                    'temperature ' + pdfArray[7],
+                    'vibration ' + pdfArray[8]
+                ], fontSize: 15
+            },
+            {
+                table: {
+                    headerRows: 1,
+                    widths: [ '*', 'auto', 100, '*' ],
+
+                    body: [ body ]
+                }
+            }
+        ]
+    }
+    pdfMake.createPdf(docDefinition).download();
+}
