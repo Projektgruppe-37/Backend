@@ -19,14 +19,15 @@ public class LiveController {
         this.liveService = liveService;
     }
 
+    @PostMapping
+    private void addLive(@RequestBody LiveData liveData) {
+        liveService.addLive(liveData);
+    }
+
     @GetMapping
     public List<LiveData> getAllBatches() {
         return liveService.getAllLive();
     }
 
-    @PostMapping
-    private void addLive(@RequestBody LiveData liveData) {
-        liveService.addLive(liveData);
-    }
-}
 
+}
