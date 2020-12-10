@@ -1,17 +1,17 @@
 package demo.dao;
 
-import demo.model.Batch;
-import demo.model.LiveData;
+import demo.model.Live;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface LiveDao {
 
-    default int insertLive(LiveData liveData) {
-        return insertLive(liveData);
+    default int insertLive(Live live) {
+        return insertLive(live);
     }
-    List<LiveData> selectAllLive();
+    List<Live> selectAllLive();
+
+    List<Live> deleteLive();
 
 }
 

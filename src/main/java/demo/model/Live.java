@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 
-public class LiveData extends ConfigUa {
+public class Live extends ConfigUa {
 
     private int maintenance;
     private float barley;
@@ -18,7 +18,7 @@ public class LiveData extends ConfigUa {
     private float malt;
     private float wheat;
     private float yeast;
-    private float batchId;
+    private int batchId;
     private float productType;
     private float amount;
     private int produced;
@@ -30,22 +30,22 @@ public class LiveData extends ConfigUa {
     private float vibration;
 
 
-    public LiveData(@JsonProperty("maintenance") int maintenance,
-                    @JsonProperty("barley") float barley,
-                    @JsonProperty("hops") float hops,
-                    @JsonProperty("malt") float malt,
-                    @JsonProperty("wheat") float wheat,
-                    @JsonProperty("yeast") float yeast,
-                    @JsonProperty("batch_id") float batchId,
-                    @JsonProperty("product_type") float productType,
-                    @JsonProperty("amount") float amount,
-                    @JsonProperty("produced") int produced,
-                    @JsonProperty("accepted_products") int acceptedProducts,
-                    @JsonProperty("defect_products") int defectProducts,
-                    @JsonProperty("mach_speed") float machSpeed,
-                    @JsonProperty("humidity") float humidity,
-                    @JsonProperty("temperature") float temperature,
-                    @JsonProperty("vibration") float vibration) {
+    public Live(@JsonProperty("maintenance") int maintenance,
+                @JsonProperty("barley") float barley,
+                @JsonProperty("hops") float hops,
+                @JsonProperty("malt") float malt,
+                @JsonProperty("wheat") float wheat,
+                @JsonProperty("yeast") float yeast,
+                @JsonProperty("batch_id") int batchId,
+                @JsonProperty("product_type") float productType,
+                @JsonProperty("amount") float amount,
+                @JsonProperty("produced") int produced,
+                @JsonProperty("accepted_products") int acceptedProducts,
+                @JsonProperty("defect_products") int defectProducts,
+                @JsonProperty("mach_speed") float machSpeed,
+                @JsonProperty("humidity") float humidity,
+                @JsonProperty("temperature") float temperature,
+                @JsonProperty("vibration") float vibration) {
 
         this.maintenance = maintenance;
         this.barley = barley;
@@ -155,13 +155,13 @@ public class LiveData extends ConfigUa {
         return yeast;
     }
 
-    public float getBatchId() {
+    public int getBatchId() {
         try {
 
-            NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.Parameter[0].Value");
+            NodeId nodeId = new NodeId(6, "::Program:batch_id");
             DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
-            batchId = (float) variant.getValue();
+            batchId = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
     //        System.out.println("Product Type = " + batchId);
         } catch (Exception e) {
@@ -206,10 +206,10 @@ public class LiveData extends ConfigUa {
     public int getProduced() {
         try {
 
-            NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.ProdProcessedCount");
+            NodeId nodeId = new NodeId(6, "::Program:product.produced");
             DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
-            produced = (int) variant.getValue();
+            produced = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
     //        System.out.println("Produced = " + produced);
         } catch (Exception e) {

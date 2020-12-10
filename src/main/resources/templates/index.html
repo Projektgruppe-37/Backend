@@ -111,7 +111,7 @@
                               <tr style="border-bottom: black solid 1px">
                                 <th id="temperature" scope="row"></th>
 
-                                <td>batch here</td>
+                                <td id="batch_id"></td>
                                 <td id="produced"></td>
                               </tr>
                               <tr>
@@ -131,7 +131,7 @@
                               </tr>
                               <tr style="border-bottom: black solid 1px">
                                 <th id="vibration" scope="row"></th>
-                                <td>Products per minute here</td>
+                                <td id="mach_speed"></td>
                                 <td id="defect_products"></td>
                               </tr>
                             </tbody>
@@ -218,6 +218,7 @@
         resetProductAmount();
         resetProductType();
         resetCntrlCmd();
+        count = 0;
         setTimeout(function () {
             fetch("http://localhost:8080/setCCR?valCCR=" + true)
         }, 1500)
@@ -225,6 +226,16 @@
         document.querySelector("#machSpeed").value = "";
         document.querySelector("#productAmount").value = "";
         document.querySelector("#productType").value = "";
+
+  /*      fetch("http://localhost:8080/api/v1/live", {
+            method: "DELETE",
+            headers: { 'Content-Type': 'application/json' }
+
+        })*/
+        document.getElementById("produced").value = "";
+
+
+
 
     });
 
