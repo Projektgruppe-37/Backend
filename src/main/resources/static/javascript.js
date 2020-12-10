@@ -30,8 +30,9 @@ pdfArray[6] = 0;
 pdfArray[7] = 0;
 pdfArray[8] = 0;
 
-var body = [];
-var counter = 0;
+var bodyPDF = [];
+var bodyPDF1 = [];
+
 var getJSON = function (url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -45,7 +46,7 @@ var getJSON = function (url, callback) {
     };
     xhr.send();
 };
-
+var counter = 0;
 let count = 0;
 window.setInterval(function () {
     getJSON('http://localhost:8080/api/v1/live',
@@ -88,10 +89,9 @@ window.setInterval(function () {
                     pdfArray.splice(8, 1, vibration);
                 }
 
-                const row = "[ "+counter + 0.25+" ]" + ", ";
-
-                body.push(row);
-
+                counter = counter + 1;
+                bodyPDF.push({ text: "Time", style: 'tableHeader' });
+                bodyPDF1.push({ text: counter, style: 'tableHeader' });
 
                 document.getElementById('batch_id').innerHTML = batch_id;
                 document.getElementById('mach_speed').innerHTML = mach_speed;
@@ -162,7 +162,7 @@ window.setInterval(function () {
 }, 1000);
 
 function printPDF() {
-    console.log(body);
+    console.log(bodyPDF);
     var docDefinition = {
         content: [
             {
@@ -184,9 +184,9 @@ function printPDF() {
             {
                 table: {
                     headerRows: 1,
-                    widths: [ '*', 'auto', 100, '*' ],
-
-                    body: [ body ]
+                    body: [
+                        [ bodyPDF, bodyPDF1 ],
+                    ]
                 }
             }
         ]
