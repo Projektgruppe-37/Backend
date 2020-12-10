@@ -46,23 +46,23 @@
                     <div class="row">
                         <div class="col-md-auto ingredient-table">
                             <h2>BARLEY</h2>
-                            <div class="ingredient-box"></div>
+                            <div data-color="19" class="ingredient-box"></div>
                         </div>
                         <div class="col-md-auto ingredient-table">
                             <h2>HOPS</h2>
-                            <div class="ingredient-box"></div>
+                            <div data-color="19" class="ingredient-box"></div>
                         </div>
                         <div class="col-md-auto ingredient-table">
                             <h2>MALT</h2>
-                            <div class="ingredient-box"></div>
+                            <div data-color="19" class="ingredient-box"></div>
                         </div>
                         <div class="col-md-auto ingredient-table">
                             <h2>WHEAT</h2>
-                            <div class="ingredient-box"></div>
+                            <div data-color="19" class="ingredient-box"></div>
                         </div>
                         <div class="col-md-auto ingredient-table">
                             <h2>YEAST</h2>
-                            <div class="ingredient-box"></div>
+                            <div data-color="19" class="ingredient-box"></div>
                         </div>
                     </div>
                 </div>
@@ -109,43 +109,10 @@
                                 <td>Produced<i class="fab fa-product-hunt"></i></td>
                               </tr>
                               <tr style="border-bottom: black solid 1px">
-                                <th id="temp" scope="row">temp here</th>
-                                  <script>
-                                      var getJSON = function(url, callback) {
-                                          var xhr = new XMLHttpRequest();
-                                          xhr.open('GET', url, true);
-                                          xhr.onload = function() {
-                                              var status = xhr.status;
-                                              if (status === 200) {
-                                                  callback(null, xhr.response);
-                                              } else {
-                                                  callback(status, xhr.response);
-                                              }
-                                          };
-                                          xhr.send();
-                                      };
-                                      window.setInterval(function(){
-                                      getJSON('http://localhost:8080/api/v1/batch',
-                                          function(err, data) {
+                                <th id="temperature" scope="row"></th>
 
-                                              var value;
-                                              var newValue;
-                                              if (err !== null) {
-                                                  console.log('Something went wrong: ' + err);
-                                              } else {
-                                                  value = JSON.parse(data);
-                                                  for (var i = 0; i < value.length; i++) {
-                                                      var obj = value[i];
-                                                      newValue = obj["vibration"];
-                                                  }
-                                                  console.log(newValue);
-                                                  document.getElementById('temp').innerHTML = newValue;
-                                              }
-                                          });
-                                      }, 5000);
-                                  </script>
                                 <td>batch here</td>
-                                <td>produced here</td>
+                                <td id="produced"></td>
                               </tr>
                               <tr>
                                 <th scope="row">Humidity</th>
@@ -153,19 +120,19 @@
                                 <td>Acceptable products</td>
                               </tr>
                               <tr style="border-bottom: black solid 1px">
-                                <th scope="row">humidity here</th>
-                                <td>Amount to produce here</td>
-                                <td>Acceptable products here</td>
+                                <th id="humidity" scope="row"></th>
+                                <td id="amount"></td>
+                                <td id="accepted_products"></td>
                               </tr>
                               <tr>
                                 <th scope="row">Vibration</th>
                                 <td>Products per minute</td>
-                                <td>Deleted products</td>
+                                <td>Defected products</td>
                               </tr>
                               <tr style="border-bottom: black solid 1px">
-                                <th scope="row">Vibration here</th>
+                                <th id="vibration" scope="row"></th>
                                 <td>Products per minute here</td>
-                                <td>Deleted products here</td>
+                                <td id="defect_products"></td>
                               </tr>
                             </tbody>
                           </table>
@@ -200,15 +167,23 @@
 </body>
 
 <script>
+    var batchID = document.querySelector("#batchID");
+    batchID.addEventListener("input", () => {
+        fetch("http://localhost:8080/setbatchID?batchID=" + batchID.value);
+    })
+    var machSpeed = document.querySelector("#machSpeed");
+    machSpeed.addEventListener("input", () => {
+        fetch("http://localhost:8080/setmachinespeed?machineSpeed=" + machSpeed.value);
+    })
+    var productAmount = document.querySelector("#productAmount");
+    productAmount.addEventListener("input", () => {
+        fetch("http://localhost:8080/setproductamount?productAmount=" + productAmount.value);
+    })
+    var productType = document.querySelector("#productType");
+    productType.addEventListener("input", () => {
+        fetch("http://localhost:8080/setproducttype?productType=" + productType.value);
+    })
     document.getElementById("startBtn").addEventListener("click", function() {
-        var batchID = document.querySelector("#batchID");
-        queryBatchID(batchID);
-        var machSpeed = document.querySelector("#machSpeed");
-        queryMachSpeed(machSpeed);
-        var productAmount = document.querySelector("#productAmount");
-        queryProductAmount(productAmount);
-        var productType = document.querySelector("#productType");
-        queryProductType(productType);
 
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 2);
 
@@ -243,15 +218,14 @@
         resetProductAmount();
         resetProductType();
         resetCntrlCmd();
-        resetCCR();
+        setTimeout(function () {
+            fetch("http://localhost:8080/setCCR?valCCR=" + true)
+        }, 3000)
         document.querySelector("#batchID").value = "";
         document.querySelector("#machSpeed").value = "";
         document.querySelector("#productAmount").value = "";
         document.querySelector("#productType").value = "";
 
-        setTimeout(function () {
-            fetch("http://localhost:8080/setCCR?valCCR=" + true)
-        }, 3000)
     });
 
     document.getElementById("stopBtn").addEventListener("click", function() {
@@ -264,10 +238,18 @@
 
     document.getElementById("abortBtn").addEventListener("click", function() {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 3);
+
+        setTimeout(function () {
+            fetch("http://localhost:8080/setCCR?valCCR=" + true)
+        }, 3000)
     });
 
     document.getElementById("clearBtn").addEventListener("click", function() {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 4);
+
+        setTimeout(function () {
+            fetch("http://localhost:8080/setCCR?valCCR=" + true)
+        }, 3000)
     });
 </script>
 </html>
