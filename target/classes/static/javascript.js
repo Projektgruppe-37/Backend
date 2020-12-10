@@ -1,26 +1,3 @@
-window.addEventListener('load', (event) => {
-    fetch("http://localhost:8080/setmachinespeed?machineSpeed=" + 0);
-});
-function queryBatchID(batchID) {
-    batchID.addEventListener("input", () => {
-        fetch("http://localhost:8080/setbatchID?batchID=" + batchID.value);
-    })
-}
-function queryMachSpeed(machSpeed) {
-    machSpeed.addEventListener("input", () => {
-        fetch("http://localhost:8080/setmachinespeed?machineSpeed=" + machSpeed.value);
-    })
-}
-function queryProductAmount(productAmount) {
-    productAmount.addEventListener("input", () => {
-        fetch("http://localhost:8080/setproductamount?productAmount=" + productAmount.value);
-    })
-}
-function queryProductType() {
-    productType.addEventListener("input", () => {
-        fetch("http://localhost:8080/setproducttype?productType=" + productType.value);
-    })
-}
 function resetBatchID() {
         fetch("http://localhost:8080/setbatchID?batchID=" + 0);
 }
@@ -76,6 +53,7 @@ window.setInterval(function(){
             } else {
                 value = JSON.parse(data);
                 for (var i = 0; i < value.length; i++) {
+                    var productsTotal = 0;
                     var obj = value[i];
                     amount = obj["amount"];
                     pdfArray.splice(0,1,amount);
@@ -91,6 +69,10 @@ window.setInterval(function(){
                     pdfArray.splice(5,1,temperature);
                     vibration = obj["vibration"];
                     pdfArray.splice(6,1,vibration);
+
+                    if (productsTotal === amount) {
+
+                    }
                 }
                 document.getElementById('amount').innerHTML = amount;
                 document.getElementById('produced').innerHTML = produced;
@@ -100,6 +82,7 @@ window.setInterval(function(){
                 document.getElementById('temperature').innerHTML = temperature;
                 document.getElementById('vibration').innerHTML = vibration;
             }
+
         });
 }, 1000);
 
