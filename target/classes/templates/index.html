@@ -4,153 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beer Machine</title>
-    <link th:href="@{/style.css}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/239c2de455.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js" integrity="sha512-gYUM+7JjtBqPPGOgwgOZ+NwjGl+11/EP124oB+ihjlBpLgP5LTh7R/Iwcdy//cgH+QzrjspBiJI5iUegTNww3w==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js" integrity="sha512-vv3EN6dNaQeEWDcxrKPFYSFba/kgm//IUnvLPMPadaUf5+ylZyx4cKxuc4HdBf0PPAlM7560DV63ZcolRJFPqA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"
+            integrity="sha512-gYUM+7JjtBqPPGOgwgOZ+NwjGl+11/EP124oB+ihjlBpLgP5LTh7R/Iwcdy//cgH+QzrjspBiJI5iUegTNww3w=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"
+            integrity="sha512-vv3EN6dNaQeEWDcxrKPFYSFba/kgm//IUnvLPMPadaUf5+ylZyx4cKxuc4HdBf0PPAlM7560DV63ZcolRJFPqA=="
+            crossorigin="anonymous"></script>
     <script type="text/javascript" th:src="@{/javascript.js}"></script>
 </head>
 
 <body>
 
-    <div class="container-fluid overflow-hidden">
-        <div class="header">
-            <div class="row">
-                <div class="col justify-content-center">
-                    <h1>BEER MACHINE</h1>
-                </div>
-                <div class="col-md-auto">
-                    <h1>SDU</h1>
-                </div>
+<div class="container-fluid overflow-hidden">
+    <div class="header">
+        <div class="row">
+            <div class="col justify-content-center">
+                <h1>BEER MACHINE</h1>
+            </div>
+            <div class="col-md-auto">
+                <h1>SDU</h1>
             </div>
         </div>
+    </div>
 
     <div class="wrapper">
-        <div class="container-fluid controls"> 
+        <div class="container-fluid controls">
             <div class="container-fluid overview">
-            <div class="row">
-                <div class="col-xs list-group d-flex justify-content-center">
-                    <button id="resetBtn" type="button" class="list-group-item">RESET</button>
+                <div class="row">
+                    <div class="col-xs list-group d-flex justify-content-center">
+                        <button id="resetBtn" type="button" class="list-group-item">RESET</button>
 
-                    <button id="startBtn" type="button" class="list-group-item">START</button>
+                        <button id="startBtn" type="button" class="list-group-item">START</button>
 
-                    <button id="stopBtn" type="button" class="list-group-item">STOP</button>
+                        <button id="stopBtn" type="button" class="list-group-item">STOP</button>
 
-                    <button id="abortBtn" type="button" class="list-group-item">ABORT</button>
+                        <button id="abortBtn" type="button" class="list-group-item">ABORT</button>
 
-                    <button id="clearBtn" type="button" class="list-group-item">CLEAR</button>
+                        <button id="clearBtn" type="button" class="list-group-item">CLEAR</button>
 
-                </div>
-                <div class="col-lg d-flex justify-content-center">
-                    <div class="row">
-                        <div class="col-md-auto ingredient-table">
-                            <h2>BARLEY</h2>
-                            <div id="barley" data-color="19" class="ingredient-box"></div>
+                    </div>
+                    <div class="col-lg d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col-md-auto ingredient-table">
+                                <h2>BARLEY</h2>
+                                <div id="barley" data-color="19" class="ingredient-box"></div>
+                            </div>
+                            <div class="col-md-auto ingredient-table">
+                                <h2>HOPS</h2>
+                                <div id="hops" data-color="19" class="ingredient-box"></div>
+                            </div>
+                            <div class="col-md-auto ingredient-table">
+                                <h2>MALT</h2>
+                                <div id="malt" data-color="19" class="ingredient-box"></div>
+                            </div>
+                            <div class="col-md-auto ingredient-table">
+                                <h2>WHEAT</h2>
+                                <div id="wheat" data-color="19" class="ingredient-box"></div>
+                            </div>
+                            <div class="col-md-auto ingredient-table">
+                                <h2>YEAST</h2>
+                                <div id="yeast" data-color="19" class="ingredient-box"></div>
+                            </div>
                         </div>
-                        <div class="col-md-auto ingredient-table">
-                            <h2>HOPS</h2>
-                            <div id="hops" data-color="19" class="ingredient-box"></div>
-                        </div>
-                        <div class="col-md-auto ingredient-table">
-                            <h2>MALT</h2>
-                            <div id="malt" data-color="19" class="ingredient-box"></div>
-                        </div>
-                        <div class="col-md-auto ingredient-table">
-                            <h2>WHEAT</h2>
-                            <div id="wheat" data-color="19" class="ingredient-box"></div>
-                        </div>
-                        <div class="col-md-auto ingredient-table">
-                            <h2>YEAST</h2>
-                            <div id="yeast" data-color="19" class="ingredient-box"></div>
+                    </div>
+                    <div class="col-md-auto maintainence-table d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col">
+                                <h2>MT BAR</h2>
+                                <div id="mtbar" class="maintainence-box"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-auto maintainence-table d-flex justify-content-center">
-                  <div class="row">
-                    <div class="col">
-                        <h2>MT BAR</h2>
-                        <div id="mtbar" class="maintainence-box"></div>
-                    </div>
-                  </div>
-                </div>
-            </div>
 
-                  <div class="row controls">
+                <div class="row controls">
                     <div class="col d-flex justify-content-center">
-                      <div class="row">
-                          <div class="col">
-                              <h5>Batch ID</h5>
-                            <input id="batchID" type="text" placeholder="ID of that batch..."/>
-                          </div>
-                          <div class="col">
-                            <h5>Machine Speed</h5>
-                            <input id="machSpeed" placeholder="Speed of the machine..." type="text" />
-                          </div>
-                          <div class="col">
-                            <h5>Product amount</h5>
-                            <input id="productAmount" placeholder="Amount to produce..." type="text" />
-                          </div>
-                          <div class="col">
-                            <h5>Product Type</h5>
-                            <input id="productType" placeholder="Type of beer..." type="text" />
-                          </div>
-                      </div>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Batch ID</h5>
+                                <input id="batchID" type="text" placeholder="ID of that batch..."/>
+                            </div>
+                            <div class="col">
+                                <h5>Machine Speed</h5>
+                                <input id="machSpeed" placeholder="Speed of the machine..." type="text"/>
+                            </div>
+                            <div class="col">
+                                <h5>Product amount</h5>
+                                <input id="productAmount" placeholder="Amount to produce..." type="text"/>
+                            </div>
+                            <div class="col">
+                                <h5>Product Type</h5>
+                                <input id="productType" placeholder="Type of beer..." type="text"/>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                </div>
 
                 <div class="row data-oee">
                     <div class="col-10 data-box">
                         <table class="table">
                             <tbody>
-                              <tr>
+                            <tr>
                                 <th scope="row">Temperature<i class="fas fa-thermometer-half"></i></th>
                                 <td>Batch ID<i class="fas fa-boxes"></i></td>
                                 <td>Produced<i class="fab fa-product-hunt"></i></td>
-                              </tr>
-                              <tr style="border-bottom: black solid 1px">
+                            </tr>
+                            <tr style="border-bottom: black solid 1px">
                                 <th id="temperature" scope="row"></th>
 
                                 <td id="batch_id"></td>
                                 <td id="produced"></td>
-                              </tr>
-                              <tr>
+                            </tr>
+                            <tr>
                                 <th scope="row">Humidity</th>
                                 <td>Amount to produce</td>
                                 <td>Acceptable products</td>
-                              </tr>
-                              <tr style="border-bottom: black solid 1px">
+                            </tr>
+                            <tr style="border-bottom: black solid 1px">
                                 <th id="humidity" scope="row"></th>
                                 <td id="amount"></td>
                                 <td id="accepted_products"></td>
-                              </tr>
-                              <tr>
+                            </tr>
+                            <tr>
                                 <th scope="row">Vibration</th>
                                 <td>Products per minute</td>
                                 <td>Defected products</td>
-                              </tr>
-                              <tr style="border-bottom: black solid 1px">
+                            </tr>
+                            <tr style="border-bottom: black solid 1px">
                                 <th id="vibration" scope="row"></th>
                                 <td id="mach_speed"></td>
                                 <td id="defect_products"></td>
-                              </tr>
+                            </tr>
                             </tbody>
-                          </table>
+                        </table>
                     </div>
 
                     <div class="col-2 printReportBox">
                         <div class="row">
                             <div class="col">
-                                
+
                                 <h4>OEE</h4>
                                 <div class="row justify-content-center">
                                     <h5>OEE number here</h5>
                                 </div>
-                                    <h4>Print Batch Report</h4>
-                                    <div class="row justify-content-center">
-                                        <button id="printReportBtn" class="btn btn-secondary" onclick="printPDF()" type="button">Print Batch Report</button>
+                                <h4>Print Batch Report</h4>
+                                <div class="row justify-content-center">
+                                    <button id="printReportBtn" class="btn btn-secondary" onclick="printPDF()"
+                                            type="button">Print Batch Report
+                                    </button>
 
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -158,12 +165,12 @@
 
             </div>
         </div>
-        </div>
     </div>
+</div>
 
 
-    </div>
-    
+</div>
+
 </body>
 
 <script>
@@ -183,7 +190,7 @@
     productType.addEventListener("input", () => {
         fetch("http://localhost:8080/setproducttype?productType=" + productType.value);
     })
-    document.getElementById("startBtn").addEventListener("click", function() {
+    document.getElementById("startBtn").addEventListener("click", function () {
 
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 2);
 
@@ -192,12 +199,12 @@
         }, 3000)
 
         setTimeout(function () {
-        fetch("http://localhost:8080/api/v1/live",
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({})
-            })
+            fetch("http://localhost:8080/api/v1/live",
+                {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({})
+                })
         }, 5000)
 
         setTimeout(function () {
@@ -212,34 +219,32 @@
         }, 1500)
     });
 
-    document.getElementById("resetBtn").addEventListener("click", function() {
+    document.getElementById("resetBtn").addEventListener("click", function () {
         resetBatchID();
         resetMachSpeed();
         resetProductAmount();
         resetProductType();
         resetCntrlCmd();
-        count = 0;
+        resetCntrlCmd();
+
         setTimeout(function () {
             fetch("http://localhost:8080/setCCR?valCCR=" + true)
         }, 1500)
+
+        setTimeout(function () {
+            count = 0;
+        }, 3000)
+
+
         document.querySelector("#batchID").value = "";
         document.querySelector("#machSpeed").value = "";
         document.querySelector("#productAmount").value = "";
         document.querySelector("#productType").value = "";
 
-  /*      fetch("http://localhost:8080/api/v1/live", {
-            method: "DELETE",
-            headers: { 'Content-Type': 'application/json' }
-
-        })*/
-        document.getElementById("produced").value = "";
-
-
-
 
     });
 
-    document.getElementById("stopBtn").addEventListener("click", function() {
+    document.getElementById("stopBtn").addEventListener("click", function () {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 3);
 
         setTimeout(function () {
@@ -247,7 +252,7 @@
         }, 1500)
     });
 
-    document.getElementById("abortBtn").addEventListener("click", function() {
+    document.getElementById("abortBtn").addEventListener("click", function () {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 4);
 
         setTimeout(function () {
@@ -255,7 +260,7 @@
         }, 1500)
     });
 
-    document.getElementById("clearBtn").addEventListener("click", function() {
+    document.getElementById("clearBtn").addEventListener("click", function () {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 5);
 
         setTimeout(function () {

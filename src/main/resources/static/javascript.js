@@ -99,7 +99,7 @@ window.setInterval(function () {
 
 
 
-            if (produced == amount && count == 0)
+            if (produced == amount && count == 0 && produced != 0)
             {
                     fetch("http://localhost:8080/api/v1/batch",
                         {
