@@ -104,3 +104,38 @@ function printPDF() {
     }
     pdfMake.createPdf(docDefinition).download();
 }
+window.setInterval(function() {
+    getJSON('http://localhost:8080/api/v1/batch',
+        function(err, data) {
+            let barley;
+            let hops;
+            let malt;
+            let wheat;
+            let yeast;
+            let mtbar;
+            if (err !== null) {
+                console.log('Something went wrong: ' + err);
+            } else {
+                value = JSON.parse(data);
+                for (var i = 0; i < value.length; i++) {
+                    var obj = value[i];
+                    barley = obj["barley"];
+                    hops = obj["hops"];
+                    malt = obj["malt"];
+                    wheat = obj["wheat"];
+                    yeast = obj["yeast"];
+                    mtbar = obj["mtbar"];
+
+                    //if () {
+                      //  document.getElementById('barley').style.backgroundColor = "green";
+                        //document.getElementById('hops').style.backgroundColor = "green";
+                        //document.getElementById('malt').style.backgroundColor = "green";
+                        //document.getElementById('wheat').style.backgroundColor = "green";
+                        //document.getElementById('yeast').style.backgroundColor = "green";
+                        //document.getElementById('mtbar').style.backgroundColor = "green";
+                    //}
+                }
+            }
+        })
+}, 3000);
+

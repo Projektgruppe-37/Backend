@@ -14,6 +14,7 @@ import java.util.UUID;
 public class Batch {
 
     private final UUID id;
+    private float batchId;
     private float productType;
     private float amount;
     private int produced;
@@ -27,6 +28,7 @@ public class Batch {
 
 
     public Batch(@JsonProperty("id") UUID id,
+                 @JsonProperty("batch_id") float batchId,
                  @JsonProperty("product_type") float productType,
                  @JsonProperty("amount") float amount,
                  @JsonProperty("produced") int produced,
@@ -39,6 +41,7 @@ public class Batch {
                  @JsonProperty("created") Timestamp created) {
 
         this.id = id;
+        this.batchId = batchId;
         this.productType = productType;
         this.amount = amount;
         this.produced = produced;
@@ -55,6 +58,21 @@ public class Batch {
 
     public UUID getId() {
         return id;
+    }
+
+    public float getBatchId() {
+        try {
+
+            NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.Parameter[0].Value");
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            batchId = (float) variant.getValue();
+
+            System.out.println("Product Type = " + batchId);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return batchId;
     }
 
     public float getProductType() {

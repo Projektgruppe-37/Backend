@@ -192,7 +192,7 @@
         }, 3000)
 
         setTimeout(function () {
-        fetch("http://localhost:8080/api/v1/batch",
+        fetch("http://localhost:8080/api/v1/simu",
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -209,7 +209,7 @@
             document.querySelector("#machSpeed").value = "";
             document.querySelector("#productAmount").value = "";
             document.querySelector("#productType").value = "";
-        }, 32000)
+        }, 5000)
     });
 
     document.getElementById("resetBtn").addEventListener("click", function() {
