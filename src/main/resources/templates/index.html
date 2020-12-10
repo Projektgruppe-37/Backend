@@ -192,13 +192,13 @@
         }, 3000)
 
         setTimeout(function () {
-        fetch("http://localhost:8080/api/v1/simu",
+        fetch("http://localhost:8080/api/v1/live",
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({})
             })
-        }, 17000)
+        }, 5000)
 
         setTimeout(function () {
             batchID.value = 0;
@@ -209,7 +209,7 @@
             document.querySelector("#machSpeed").value = "";
             document.querySelector("#productAmount").value = "";
             document.querySelector("#productType").value = "";
-        }, 5000)
+        }, 1500)
     });
 
     document.getElementById("resetBtn").addEventListener("click", function() {
@@ -220,7 +220,7 @@
         resetCntrlCmd();
         setTimeout(function () {
             fetch("http://localhost:8080/setCCR?valCCR=" + true)
-        }, 3000)
+        }, 1500)
         document.querySelector("#batchID").value = "";
         document.querySelector("#machSpeed").value = "";
         document.querySelector("#productAmount").value = "";
@@ -229,27 +229,27 @@
     });
 
     document.getElementById("stopBtn").addEventListener("click", function() {
-        fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 1);
-
-        setTimeout(function () {
-            fetch("http://localhost:8080/setCCR?valCCR=" + true)
-        }, 3000)
-    });
-
-    document.getElementById("abortBtn").addEventListener("click", function() {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 3);
 
         setTimeout(function () {
             fetch("http://localhost:8080/setCCR?valCCR=" + true)
-        }, 3000)
+        }, 1500)
     });
 
-    document.getElementById("clearBtn").addEventListener("click", function() {
+    document.getElementById("abortBtn").addEventListener("click", function() {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 4);
 
         setTimeout(function () {
             fetch("http://localhost:8080/setCCR?valCCR=" + true)
-        }, 3000)
+        }, 1500)
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", function() {
+        fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 5);
+
+        setTimeout(function () {
+            fetch("http://localhost:8080/setCCR?valCCR=" + true)
+        }, 1500)
     });
 </script>
 </html>

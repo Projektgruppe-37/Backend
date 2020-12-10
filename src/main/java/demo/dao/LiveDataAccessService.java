@@ -10,17 +10,23 @@ import java.util.UUID;
 
 @Repository ("live")
 public class LiveDataAccessService implements LiveDao {
-    private static List<LiveData> DB = new ArrayList<>();
+    private static List<LiveData> arr;
 
     @Override
-    public int insertLive(UUID id, LiveData liveData) {
-        DB.add(new LiveData(id, liveData.getProducedLive()));
+    public int insertLive(LiveData liveData) {
+        arr = new ArrayList<>();
+        arr.add(new LiveData(liveData.getMaintenance(), liveData.getBarley(), liveData.getHops(), liveData.getMalt(),
+                liveData.getWheat(), liveData.getYeast(), liveData.getBatchId(),
+                liveData.getProductType(), liveData.getAmount(), liveData.getProduced(),
+                liveData.getAcceptedProducts(), liveData.getDefectProducts(),
+                liveData.getMachSpeed(), liveData.getHumidity(), liveData.getTemperature(),
+                liveData.getVibration()));
     return 1;
     }
 
     @Override
     public List<LiveData> selectAllLive() {
-        return DB;
+        return arr;
     }
 }
 
