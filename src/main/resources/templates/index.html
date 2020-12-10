@@ -112,33 +112,32 @@
                                 <th scope="row">Temperature<i class="fas fa-thermometer-half"></i></th>
                                 <td>Batch ID<i class="fas fa-boxes"></i></td>
                                 <td>Produced<i class="fab fa-product-hunt"></i></td>
-                            </tr>
-                            <tr style="border-bottom: black solid 1px">
-                                <th id="temperature" scope="row"></th>
-
-                                <td id="batch_id"></td>
-                                <td id="produced"></td>
-                            </tr>
-                            <tr>
+                              </tr>
+                              <tr style="border-bottom: black solid 1px">
+                                <th id="temperature" scope="row">0</th>
+                                <td id="batch_id">0</td>
+                                <td id="produced">0</td>
+                              </tr>
+                              <tr>
                                 <th scope="row">Humidity</th>
                                 <td>Amount to produce</td>
                                 <td>Acceptable products</td>
-                            </tr>
-                            <tr style="border-bottom: black solid 1px">
-                                <th id="humidity" scope="row"></th>
-                                <td id="amount"></td>
-                                <td id="accepted_products"></td>
-                            </tr>
-                            <tr>
+                              </tr>
+                              <tr style="border-bottom: black solid 1px">
+                                <th id="humidity" scope="row">0</th>
+                                <td id="amount">0</td>
+                                <td id="accepted_products">0</td>
+                              </tr>
+                              <tr>
                                 <th scope="row">Vibration</th>
                                 <td>Products per minute</td>
                                 <td>Defected products</td>
-                            </tr>
-                            <tr style="border-bottom: black solid 1px">
-                                <th id="vibration" scope="row"></th>
-                                <td id="mach_speed"></td>
-                                <td id="defect_products"></td>
-                            </tr>
+                              </tr>
+                              <tr style="border-bottom: black solid 1px">
+                                <th id="vibration" scope="row">0</th>
+                                <td id="mach_speed">0</td>
+                                <td id="defect_products">0</td>
+                              </tr>
                             </tbody>
                         </table>
                     </div>
@@ -146,17 +145,17 @@
                     <div class="col-2 printReportBox">
                         <div class="row">
                             <div class="col">
-
-                                <h4>OEE</h4>
-                                <div class="row justify-content-center">
-                                    <h5>OEE number here</h5>
+                                <div style="margin-top: 10%;">
+                                    <h4>OEE</h4>
+                                    <div class="row justify-content-center">
+                                        <h5>OEE number here</h5>
+                                    </div>
                                 </div>
-                                <h4>Print Batch Report</h4>
-                                <div class="row justify-content-center">
-                                    <button id="printReportBtn" class="btn btn-secondary" onclick="printPDF()"
-                                            type="button">Print Batch Report
-                                    </button>
-
+                                <div style="margin-top: 5%;">
+                                        <h5>Print Batch Report</h5>
+                                        <div class="row justify-content-center">
+                                            <button id="printReportBtn" class="btn btn-secondary" onclick="printPDF()" type="button">Print Batch Report</button>
+                                        </div>
                                 </div>
                             </div>
                         </div>
