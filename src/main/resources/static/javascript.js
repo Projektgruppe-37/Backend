@@ -64,7 +64,6 @@ window.setInterval(function () {
             } else {
                 value = JSON.parse(data);
                 for (let i = 0; i < value.length; i++) {
-                    let productsTotal = 0;
                     let obj = value[i];
                     batch_id = obj["batch_id"];
                     pdfArray.splice(0, 1, batch_id)
@@ -110,7 +109,7 @@ window.setInterval(function () {
                 count += 1;
                 }
         });
-}, 1000);
+}, 250);
 
 function printPDF() {
 
@@ -144,6 +143,7 @@ window.setInterval(function () {
             let wheat;
             let yeast;
             let mtbar;
+            let value;
             if (err !== null) {
                 console.log('Something went wrong: ' + err);
             } else {
@@ -157,16 +157,16 @@ window.setInterval(function () {
                     yeast = obj["yeast"];
                     mtbar = obj["mtbar"];
 
-                 /*   if () {
-                      document.getElementById('barley').style.backgroundColor = "green";
-                    document.getElementById('hops').style.backgroundColor = "green";
-                    document.getElementById('malt').style.backgroundColor = "green";
-                    document.getElementById('wheat').style.backgroundColor = "green";
-                    document.getElementById('yeast').style.backgroundColor = "green";
-                    document.getElementById('mtbar').style.backgroundColor = "green";
-                    }*/
+                    /*   if () {
+                         document.getElementById('barley').style.backgroundColor = "green";
+                       document.getElementById('hops').style.backgroundColor = "green";
+                       document.getElementById('malt').style.backgroundColor = "green";
+                       document.getElementById('wheat').style.backgroundColor = "green";
+                       document.getElementById('yeast').style.backgroundColor = "green";
+                       document.getElementById('mtbar').style.backgroundColor = "green";
+                       }*/
                 }
             }
         })
-}, 3000);
+}, 1000);
 
