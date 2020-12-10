@@ -109,10 +109,9 @@
                                 <td>Produced<i class="fab fa-product-hunt"></i></td>
                               </tr>
                               <tr style="border-bottom: black solid 1px">
-                                <th id="temperature" scope="row"></th>
-
-                                <td id="batch_id"></td>
-                                <td id="produced"></td>
+                                <th id="temperature" scope="row">0</th>
+                                <td id="batch_id">0</td>
+                                <td id="produced">0</td>
                               </tr>
                               <tr>
                                 <th scope="row">Humidity</th>
@@ -120,9 +119,9 @@
                                 <td>Acceptable products</td>
                               </tr>
                               <tr style="border-bottom: black solid 1px">
-                                <th id="humidity" scope="row"></th>
-                                <td id="amount"></td>
-                                <td id="accepted_products"></td>
+                                <th id="humidity" scope="row">0</th>
+                                <td id="amount">0</td>
+                                <td id="accepted_products">0</td>
                               </tr>
                               <tr>
                                 <th scope="row">Vibration</th>
@@ -130,9 +129,9 @@
                                 <td>Defected products</td>
                               </tr>
                               <tr style="border-bottom: black solid 1px">
-                                <th id="vibration" scope="row"></th>
-                                <td id="mach_speed"></td>
-                                <td id="defect_products"></td>
+                                <th id="vibration" scope="row">0</th>
+                                <td id="mach_speed">0</td>
+                                <td id="defect_products">0</td>
                               </tr>
                             </tbody>
                           </table>
@@ -141,16 +140,18 @@
                     <div class="col-2 printReportBox">
                         <div class="row">
                             <div class="col">
-                                
-                                <h4>OEE</h4>
-                                <div class="row justify-content-center">
-                                    <h5>OEE number here</h5>
-                                </div>
-                                    <h4>Print Batch Report</h4>
+                                <div style="margin-top: 10%;">
+                                    <h4>OEE</h4>
                                     <div class="row justify-content-center">
-                                        <button id="printReportBtn" class="btn btn-secondary" onclick="printPDF()" type="button">Print Batch Report</button>
-
+                                        <h5>OEE number here</h5>
                                     </div>
+                                </div>
+                                <div style="margin-top: 5%;">
+                                        <h5>Print Batch Report</h5>
+                                        <div class="row justify-content-center">
+                                            <button id="printReportBtn" class="btn btn-secondary" onclick="printPDF()" type="button">Print Batch Report</button>
+                                        </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +190,7 @@
 
         setTimeout(function () {
             fetch("http://localhost:8080/setCCR?valCCR=" + true)
-        }, 3000)
+        }, 4000)
 
         setTimeout(function () {
         fetch("http://localhost:8080/api/v1/live",
@@ -198,7 +199,7 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({})
             })
-        }, 5000)
+        }, 6000)
 
         setTimeout(function () {
             batchID.value = 0;
@@ -209,7 +210,7 @@
             document.querySelector("#machSpeed").value = "";
             document.querySelector("#productAmount").value = "";
             document.querySelector("#productType").value = "";
-        }, 1500)
+        }, 2000)
     });
 
     document.getElementById("resetBtn").addEventListener("click", function() {
@@ -221,7 +222,7 @@
         count = 0;
         setTimeout(function () {
             fetch("http://localhost:8080/setCCR?valCCR=" + true)
-        }, 1500)
+        }, 3000)
         document.querySelector("#batchID").value = "";
         document.querySelector("#machSpeed").value = "";
         document.querySelector("#productAmount").value = "";
