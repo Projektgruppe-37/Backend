@@ -1,5 +1,5 @@
 function resetBatchID() {
-    fetch("http://localhost:8080/setbatchID?batchID=" + 0);
+    fetch("http://localhost:8080/setbatchID?batchID=" + 0)
 }
 
 function resetMachSpeed() {
@@ -30,9 +30,6 @@ pdfArray[6] = 0;
 pdfArray[7] = 0;
 pdfArray[8] = 0;
 
-var bodyPDF = [];
-var bodyPDF1 = [];
-
 var getJSON = function (url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -46,28 +43,32 @@ var getJSON = function (url, callback) {
     };
     xhr.send();
 };
-var counter = 0;
+
 let count = 0;
+
+let value;
+let vibration;
+let temperature;
+let humidity;
+let mach_speed;
+let defect_products;
+let accepted_products;
+var produced;
+var amount;
+let batch_id;
+var timeStamp;
+
 window.setInterval(function () {
     getJSON('http://localhost:8080/api/v1/live',
         function (err, data) {
 
-            let value;
-            let vibration;
-            let temperature;
-            let humidity;
-            let mach_speed;
-            let defect_products;
-            let accepted_products;
-            var produced;
-            var amount;
-            let batch_id;
             if (err !== null) {
                 console.log('Something went wrong: ' + err);
+            } else if (data === "") {
+                return 0;
             } else {
                 value = JSON.parse(data);
                 for (let i = 0; i < value.length; i++) {
-                    let counter = 0;
                     let obj = value[i];
                     batch_id = obj["batch_id"];
                     pdfArray.splice(0, 1, batch_id)
@@ -89,9 +90,11 @@ window.setInterval(function () {
                     pdfArray.splice(8, 1, vibration);
                 }
 
-                counter = counter + 1;
-                bodyPDF.push({ text: "Time", style: 'tableHeader' });
-                bodyPDF1.push({ text: counter, style: 'tableHeader' });
+                    timeLog();
+                    prevSecMethod();
+                    var time = new Date;
+
+                    timeStamp = "Time: " + time.getHours().toString() +":"+ time.getMinutes().toString() +":"+ time.getSeconds().toString();
 
                 document.getElementById('batch_id').innerHTML = batch_id;
                 document.getElementById('mach_speed').innerHTML = mach_speed;
@@ -102,6 +105,7 @@ window.setInterval(function () {
                 document.getElementById('humidity').innerHTML = humidity;
                 document.getElementById('temperature').innerHTML = temperature;
                 document.getElementById('vibration').innerHTML = vibration;
+                document.getElementById('OEE').innerHTML = accepted_products;
             }
 
 
@@ -118,6 +122,30 @@ window.setInterval(function () {
                 }
         });
 }, 250);
+var bodyPDF = [];
+var bodyPDF1 = [];
+var bodyPDF2 = [];
+var prevSec;
+function timeLog() {
+        var d = new Date();
+        if (d.getSeconds() !== prevSec) {
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+            bodyPDF.push({text: h + ":" + m + ":" + s, style: 'tableHeader'});
+            bodyPDF1.push({text: temperature.toString(), style: 'tableHeader'});
+            bodyPDF2.push({text: humidity.toString(), style: 'tableHeader'});
+        }
+}
+function prevSecMethod() {
+    var dp = new Date();
+    prevSec = dp.getSeconds();
+}
+function resetBatchReport() {
+    bodyPDF = [];
+    bodyPDF1 = [];
+    bodyPDF2 = [];
+}
 
 window.setInterval(function () {
     getJSON('http://localhost:8080/api/v1/live',
@@ -131,6 +159,8 @@ window.setInterval(function () {
             let value;
             if (err !== null) {
                 console.log('Something went wrong: ' + err);
+            } else if (data === "") {
+                return 0;
             } else {
                 value = JSON.parse(data);
                 for (var i = 0; i < value.length; i++) {
@@ -159,10 +189,10 @@ window.setInterval(function () {
                 }
             }
         })
-}, 1000);
+}, 500);
 
 function printPDF() {
-    console.log(bodyPDF);
+
     var docDefinition = {
         content: [
             {
@@ -182,13 +212,21 @@ function printPDF() {
                 ], fontSize: 15
             },
             {
+                text: 'Timelog', fontSize: 20, margin: [ 0, 20, 0, 0 ],
+            },
+            {
                 table: {
                     headerRows: 1,
-                    body: [
-                        [ bodyPDF, bodyPDF1 ],
+                    body: [ [ "Time", "Temperature", "Humidity" ],
+                        [ bodyPDF, bodyPDF1, bodyPDF2 ],
                     ]
                 }
-            }
+            },
+            {
+                text: timeStamp,
+                fontSize: 25,
+                absolutePosition: {x:350, y:20}
+            },
         ]
     }
     pdfMake.createPdf(docDefinition).download();
