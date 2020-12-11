@@ -1,3 +1,7 @@
+# In order to run the application with ARSim instead of the physical machine do following:
+# 1. Comment out line 7 using "#".
+# 2. Remove comment declaration on line 8.
+
 app:
   datasource:
     jdbc-url: jdbc:postgresql://localhost:5432/beerMachine

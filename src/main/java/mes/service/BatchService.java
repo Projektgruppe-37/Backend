@@ -23,9 +23,11 @@ public class BatchService {
     public int addBatch(Batch batch) {
         return batchDao.insertBatch(batch);
     }
-    public List<Batch> getAllBatches(){
+
+    public List<Batch> getAllBatches() {
         return batchDao.selectAllBatches();
     }
+
     public Optional<Batch> getBatchById(UUID id) {
         return batchDao.selectBatchById(id);
     }

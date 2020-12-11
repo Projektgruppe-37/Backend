@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository ("live")
+@Repository("live")
 public class LiveDataAccessService implements LiveDao {
     private static List<Live> arr;
 
@@ -20,7 +20,7 @@ public class LiveDataAccessService implements LiveDao {
                 live.getAcceptedProducts(), live.getDefectProducts(),
                 live.getMachSpeed(), live.getHumidity(), live.getTemperature(),
                 live.getVibration()));
-    return 1;
+        return 1;
     }
 
     @Override

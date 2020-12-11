@@ -70,7 +70,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             maintenance = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
-            //         System.out.println("Maintenance = " + maintenance);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -86,12 +85,12 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             barley = (float) variant.getValue();
 
-   //         System.out.println("Barley = " + barley);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return barley;
     }
+
     public float getHops() {
         try {
 
@@ -100,7 +99,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             hops = (float) variant.getValue();
 
-    //        System.out.println("Hops = " + hops);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -115,7 +113,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             malt = (float) variant.getValue();
 
-    //        System.out.println("Malt = " + malt);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -130,7 +127,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             wheat = (float) variant.getValue();
 
-    //        System.out.println("Wheat = " + wheat);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -145,7 +141,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             yeast = (float) variant.getValue();
 
-    //        System.out.println("Yeast = " + yeast);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -160,7 +155,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             batchId = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
-    //        System.out.println("Product Type = " + batchId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -176,7 +170,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             productType = (float) variant.getValue();
 
-    //        System.out.println("Product Type = " + productType);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -192,7 +185,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             amount = (float) variant.getValue();
 
-    //        System.out.println("Amount = " + amount);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -208,7 +200,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             produced = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
-    //        System.out.println("Produced = " + produced);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -220,8 +211,6 @@ public class Live extends ConfigUa {
     public int getAcceptedProducts() {
 
         acceptedProducts = produced - defectProducts;
-    //    System.out.println("Accepted Products = " + acceptedProducts);
-
         return acceptedProducts;
     }
 
@@ -234,7 +223,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             defectProducts = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
-    //        System.out.println("Defect Products = " + defectProducts);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -250,7 +238,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             machSpeed = (float) variant.getValue();
 
-    //        System.out.println("Machine Speed = " + machSpeed);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -267,7 +254,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             humidity = (float) variant.getValue();
 
-    //        System.out.println("Humidity = " + humidity);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -283,7 +269,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             temperature = (float) variant.getValue();
 
-    //        System.out.println("Temperature = " + temperature);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -300,7 +285,6 @@ public class Live extends ConfigUa {
             Variant variant = dataValue.getValue();
             vibration = (float) variant.getValue();
 
-    //        System.out.println("Vibration = " + vibration);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

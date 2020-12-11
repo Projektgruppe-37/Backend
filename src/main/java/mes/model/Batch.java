@@ -67,7 +67,7 @@ public class Batch {
             DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             batchId = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
-    //        System.out.println("Product Type = " + batchId);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -83,7 +83,6 @@ public class Batch {
             Variant variant = dataValue.getValue();
             productType = (float) variant.getValue();
 
-    //        System.out.println("Product Type = " + productType);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -99,7 +98,6 @@ public class Batch {
             Variant variant = dataValue.getValue();
             amount = (float) variant.getValue();
 
-    //        System.out.println("Amount = " + amount);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -115,7 +113,6 @@ public class Batch {
             Variant variant = dataValue.getValue();
             produced = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
-    //        System.out.println("Produced = " + produced);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -125,10 +122,7 @@ public class Batch {
     }
 
     public int getAcceptedProducts() {
-
         acceptedProducts = produced - defectProducts;
-    //    System.out.println("Accepted Products = " + acceptedProducts);
-
         return acceptedProducts;
     }
 
@@ -141,7 +135,6 @@ public class Batch {
             Variant variant = dataValue.getValue();
             defectProducts = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
 
-    //        System.out.println("Defect Products = " + defectProducts);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -157,7 +150,6 @@ public class Batch {
             Variant variant = dataValue.getValue();
             machSpeed = (float) variant.getValue();
 
-    //        System.out.println("Machine Speed = " + machSpeed);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -174,7 +166,6 @@ public class Batch {
             Variant variant = dataValue.getValue();
             humidity = (float) variant.getValue();
 
-    //        System.out.println("Humidity = " + humidity);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -190,7 +181,6 @@ public class Batch {
             Variant variant = dataValue.getValue();
             temperature = (float) variant.getValue();
 
-    //        System.out.println("Temperature = " + temperature);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -207,7 +197,6 @@ public class Batch {
             Variant variant = dataValue.getValue();
             vibration = (float) variant.getValue();
 
-    //        System.out.println("Vibration = " + vibration);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

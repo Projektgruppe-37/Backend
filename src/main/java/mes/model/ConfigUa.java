@@ -8,7 +8,13 @@ import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
+
+// In order to run the application with ARSim instead of the physical machine do following:
+// 1. Comment out line 31 and 32 using "//".
+// 2. Remove comment declarations on line 28 and 29.
+// 3. Navigate to application.yml located in the resources package.
 
 @Component
 public class ConfigUa {

@@ -22,13 +22,14 @@ public class LiveService {
         return liveDao.insertLive(live);
     }
 
-    public List<Live> getAllLive(){
+    public List<Live> getAllLive() {
         return liveDao.selectAllLive();
     }
 
     public List<Live> deleteAllLive() {
         return liveDao.deleteLive();
 
-    }}
+    }
+}
 
 

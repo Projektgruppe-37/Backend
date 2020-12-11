@@ -9,6 +9,7 @@ public interface LiveDao {
     default int insertLive(Live live) {
         return insertLive(live);
     }
+
     List<Live> selectAllLive();
 
     List<Live> deleteLive();
