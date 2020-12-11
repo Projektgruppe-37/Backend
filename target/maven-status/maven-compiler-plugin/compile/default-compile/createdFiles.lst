@@ -1,10 +1,7 @@
-demo/dao/FakeBatchDataAccessService.class
-demo/dao/BatchDao.class
-sdu/beermachine/Subscription.class
-demo/DemoApplication.class
-sdu/beermachine/Write.class
-demo/model/Batch.class
-demo/service/BatchService.class
-demo/api/BatchController.class
-sdu/beermachine/Read.class
-demo/dao/BatchDataAccessService.class
+demo\DemoApplication.class
+demo\model\Batch.class
+demo\dao\BatchDataAccessService.class
+sdu\beermachine\Write.class
+demo\dao\BatchDao.class
+demo\service\BatchService.class
+demo\api\BatchController.class
