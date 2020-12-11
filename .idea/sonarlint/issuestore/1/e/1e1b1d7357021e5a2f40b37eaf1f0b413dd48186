@@ -1,21 +1,21 @@
 
-^	java:S107"BConstructor has 12 parameters, which is greater than 7 authorized.(€Ğ·8äÈ•Öä.
-Z	java:S106Y"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
-Z	java:S106w"9Replace this use of System.out or System.err by a logger.(©ˆ¤úÿÿÿÿ8ş™Öä.
-V	java:S106ƒ"9Replace this use of System.out or System.err by a logger.(÷¬»8ş™Öä.
-[	java:S106´"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
-[	java:S106Â"9Replace this use of System.out or System.err by a logger.(ˆ£‚îùÿÿÿÿ8ş™Öä.
-[	java:S106Ä"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
-V	java:S106Ó"9Replace this use of System.out or System.err by a logger.(èÁÚ8ş™Öä.
-V	java:S106¡"9Replace this use of System.out or System.err by a logger.(¾¸šÕ8ş™Öä.
-Z	java:S106i"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
-Z	java:S106y"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
-Z	java:S106G"9Replace this use of System.out or System.err by a logger.(³ûÉùÿÿÿÿ8«ÆŸÖä.
-[	java:S106£"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
-U	java:S106g"9Replace this use of System.out or System.err by a logger.(ı Ó8ş™Öä.
-Z	java:S106I"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8«ÆŸÖä.
-U	java:S106W"9Replace this use of System.out or System.err by a logger.(Ö¿›8ş™Öä.
-[	java:S106“"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
-[	java:S106‘"9Replace this use of System.out or System.err by a logger.(¿¢™Ìùÿÿÿÿ8ş™Öä.
-[	java:S106Õ"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
-[	java:S106²"9Replace this use of System.out or System.err by a logger.(¸Ö¸šøÿÿÿÿ8ş™Öä.
+[	java:S125"<This block of commented-out lines of code should be removed.(ŠÍ¨˜üÿÿÿÿ8Äíä.
+[	java:S125"<This block of commented-out lines of code should be removed.(¢Ê×Ëúÿÿÿÿ8Äíä.
+[	java:S125"<This block of commented-out lines of code should be removed.(•»ÂÇùÿÿÿÿ8Äíä.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
+\	java:S107"BConstructor has 12 parameters, which is greater than 7 authorized.(€Ğ·8äÈ•Öä.
+[	java:S125"<This block of commented-out lines of code should be removed.(­µóÂıÿÿÿÿ8Äíä.
+[	java:S125"<This block of commented-out lines of code should be removed.(á§ÿÿÿÿÿ8Äíä.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
+V	java:S125"<This block of commented-out lines of code should be removed.(¡“Åú8Äíä.
+V	java:S125"<This block of commented-out lines of code should be removed.(Ñƒ‡´8Äíä.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
+[	java:S125"<This block of commented-out lines of code should be removed.(¾ãÜıÿÿÿÿ8Äíä.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
+V	java:S125"<This block of commented-out lines of code should be removed.(ÆğÅë8Äíä.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
+[	java:S125"<This block of commented-out lines of code should be removed.(‘´ÿÿÿÿÿ8Äíä.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ş™Öä.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8«ÆŸÖä.

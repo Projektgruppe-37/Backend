@@ -109,7 +109,7 @@ window.setInterval(function () {
                 count += 1;
                 }
         });
-}, 300);
+}, 250);
 
 function printPDF() {
 

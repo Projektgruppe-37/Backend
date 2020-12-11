@@ -1,10 +1,4 @@
 
-<
-package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
-V
-&src/main/java/demo/model/LiveData.java,9/c/9c655e8f8cd2dee85b4f9d003eb2fbaeed90f195
-X
-(src/main/java/sdu/beermachine/Write.java,c/8/c8c44aa1c80cb9f66b8545b296832ece957e90a0
 V
 &src/main/java/demo/model/ConfigUa.java,1/2/12ae9a0d9d5aa2ccc45f41129033cdce28971ba5
 S
@@ -37,3 +31,11 @@ Y
 +src/main/java/demo/service/LiveService.java,7/9/79849d8d84ac3e265ee14f408ae2e243619889f9
 \
 ,src/main/java/demo/service/BatchService.java,4/c/4cda467c366f87a4acf24775dfadfbce5bf05242
+8
+mvnw.cmd,1/f/1f1763f358c257ea3515417352b82b0165647ad1
+4
+mvnw,5/d/5d837c4ed85ecaaf932c506e80ff5d7b9f3d590d
+M
+src/main/java/demo/Dockerfile,7/a/7aad3f6380b948365fa6599b0b77f01b2e5a738b
+U
+%src/main/java/demo/docker-compose.yml,4/c/4c49b852ac55a81eff70994e658e35cc84193dd1

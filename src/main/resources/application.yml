@@ -4,3 +4,4 @@ app:
     username: postgres
     password: root
     poll-size: 100
+    driverClassName: org.postgresql.Driver
