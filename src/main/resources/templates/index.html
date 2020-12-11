@@ -272,6 +272,11 @@
     document.getElementById("clearBtn").addEventListener("click", function () {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 5);
 
+        document.querySelector("#batchID").value = "";
+        document.querySelector("#machSpeed").value = "";
+        document.querySelector("#productAmount").value = "";
+        document.querySelector("#productType").value = "";
+
         setTimeout(function () {
             fetch("http://localhost:8080/setCCR?valCCR=" + true)
         }, 1000)
