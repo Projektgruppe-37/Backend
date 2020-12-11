@@ -1,6 +1,7 @@
-app:
-  datasource:
-    jdbc-url: jdbc:postgresql://localhost:5432/beerMachine
-    username: postgres
-    password: root
-    poll-size: 100
+#app:
+#  datasource:
+#    jdbc-url: jdbc:postgresql://localhost:5432/beerMachine
+#    username: postgres
+#    password: root
+#    poll-size: 100
+
