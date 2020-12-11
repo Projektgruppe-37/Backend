@@ -33,6 +33,7 @@ h2 {
 }
 
 .ingredient-box {
+    border: solid 1px;
     background-color: orange;
     height: 354px;
     width: 157px;
@@ -41,6 +42,7 @@ h2 {
     float: right;
 }
 .maintainence-box {
+    border: solid 1px;
     background-color: red;
     height: 354px;
     width: 100%;
