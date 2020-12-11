@@ -112,12 +112,13 @@
                                 <div class="productTypeDropdown">
                                     <h5>Product Type</h5>
                                     <select id="productTypeDrop">
-                                        <option selected="selected">Select Product Type...</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                        <option value="-1" selected="selected">Select product type...</option>
+                                        <option value="0">Pilsner</option>
+                                        <option value="1">Wheat</option>
+                                        <option value="2">IPA</option>
+                                        <option value="3">Stout</option>
+                                        <option value="4">Ale</option>
+                                        <option value="5">Alcohol Free</option>
                                     </select>
                                 </div>
                             </div>
@@ -169,7 +170,7 @@
                                 <div style="margin-top: 10%;">
                                     <h4 style="font-weight: bold">OEE</h4>
                                     <div class="row justify-content-center">
-                                        <h5>OEE number here</h5>
+                                        <h5 id="OEE">0</h5>
                                     </div>
                                 </div>
                                 <div style="margin-top: 5%;">
@@ -228,14 +229,10 @@
         }, 1000)
 
         setTimeout(function () {
-            batchID.value = 0;
-            machSpeed.value = 0;
-            productAmount.value = 0;
-            productType.value = 0;
-            document.querySelector("#batchID").value = "";
-            document.querySelector("#machSpeed").value = "";
-            document.querySelector("#productAmount").value = "";
-            document.querySelector("#productType").value = "";
+            batchID.value = "";
+            machSpeed.value = "";
+            productAmount.value = "";
+            productType.value = -1;
         }, 1000)
     });
 
@@ -255,11 +252,10 @@
             count = 0;
         }, 3000)
 
-        document.querySelector("#batchID").value = "";
-        document.querySelector("#machSpeed").value = "";
-        document.querySelector("#productAmount").value = "";
-        document.querySelector("#productType").value = "";
-
+        batchID.value = "";
+        machSpeed.value = "";
+        productAmount.value = "";
+        productType.value = -1;
     });
 
     document.getElementById("stopBtn").addEventListener("click", function () {
@@ -281,10 +277,10 @@
     document.getElementById("clearBtn").addEventListener("click", function () {
         fetch("http://localhost:8080/setcntrlcmd?cntrlcmd=" + 5);
 
-        document.querySelector("#batchID").value = "";
-        document.querySelector("#machSpeed").value = "";
-        document.querySelector("#productAmount").value = "";
-        document.querySelector("#productType").value = "";
+        batchID.value = "";
+        machSpeed.value = "";
+        productAmount.value = "";
+        productType.value = -1;
 
         setTimeout(function () {
             fetch("http://localhost:8080/setCCR?valCCR=" + true)

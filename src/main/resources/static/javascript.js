@@ -32,7 +32,6 @@ pdfArray[8] = 0;
 
 var bodyPDF = [];
 var bodyPDF1 = [];
-
 var getJSON = function (url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -51,7 +50,6 @@ let count = 0;
 window.setInterval(function () {
     getJSON('http://localhost:8080/api/v1/live',
         function (err, data) {
-
             let value;
             let vibration;
             let temperature;
@@ -64,10 +62,11 @@ window.setInterval(function () {
             let batch_id;
             if (err !== null) {
                 console.log('Something went wrong: ' + err);
+            } else if (data === "") {
+                return 0;
             } else {
                 value = JSON.parse(data);
                 for (let i = 0; i < value.length; i++) {
-                    let counter = 0;
                     let obj = value[i];
                     batch_id = obj["batch_id"];
                     pdfArray.splice(0, 1, batch_id)
@@ -102,6 +101,7 @@ window.setInterval(function () {
                 document.getElementById('humidity').innerHTML = humidity;
                 document.getElementById('temperature').innerHTML = temperature;
                 document.getElementById('vibration').innerHTML = vibration;
+                document.getElementById('OEE').innerHTML = accepted_products;
             }
 
 
@@ -131,6 +131,8 @@ window.setInterval(function () {
             let value;
             if (err !== null) {
                 console.log('Something went wrong: ' + err);
+            } else if (data === "") {
+                return 0;
             } else {
                 value = JSON.parse(data);
                 for (var i = 0; i < value.length; i++) {
@@ -159,7 +161,7 @@ window.setInterval(function () {
                 }
             }
         })
-}, 1000);
+}, 500);
 
 function printPDF() {
     console.log(bodyPDF);
