@@ -25,11 +25,11 @@ Below informations regarding running the application is shown:
    - Database name: beerMachine
 3. Navigate into the application folders:
    - In *BreweryMES/src/main/java/mes/model* open **ConfigUa.java**
-     - Comment out line 28 and 29 using "//".
-     - Remove comment declarations on line 31 and 32.
+     - Comment out line 31 and 32 using "//".
+     - Remove comment declarations on line 28 and 29.
    - In *BreweryMES/src/main/resources* open **application.yml**
-     - Comment out line 7 using "#".
-     - Remove comment declaration on line 8.
+     - Comment out line 8 using "#".
+     - Remove comment declaration on line 7.
  4. Navigate to *BreweryMES/src/main/java/mes*
     - Open a commandline, terminal, bash etc from this folder.
     - Run the following command:
