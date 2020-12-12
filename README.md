@@ -13,6 +13,9 @@ Below informations regarding running the application is shown.
 ### IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!
 
 ## Running with the physical machine (WINDOWS)
+The physical brewery simulator requires to be connected to a specific WIFI for the machine. This WIFI is not connected to the internet (or at least have a very low speed). Because of this, a few extra steps have to be done in order to run the application with Docker.
+**Be aware that localhost:8080 takes a long time to load in when connecting to the physical machine. So be patient, the page will load and it will not be slow when first loaded.**
+
 1. Open a commandline, terminal, bash etc. from the project folder *BreweryMES* and type in following command:
    - `cd src/main/java/mes && docker-compose -f docker-compose1.yml build && docker-compose -f docker-compose1.yml up`
 2. When the following error message is shown, close the commandline, terminal, bash etc.:
