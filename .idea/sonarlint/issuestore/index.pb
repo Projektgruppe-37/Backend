@@ -1,9 +1,39 @@
 
 <
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
-X
-(src/main/java/sdu/beermachine/Write.java,c/8/c8c44aa1c80cb9f66b8545b296832ece957e90a0
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
-;
-Backend.iml,a/6/a6391545da7e7e2e21c8adc8f7ed0a6dbfcaf84c
+L
+src/main/java/mes/Dockerfile,1/6/16a7f25aa2b521154c5b8cc78f14f89be22aa292
+X
+(src/main/java/mes/service/SetValues.java,d/1/d180a52c19927f982838f67d6c44377a4e195d61
+Z
+*src/main/java/mes/service/LiveService.java,a/c/ac215ebac9b1a73b259497ad888872837db6f233
+[
++src/main/java/mes/service/BatchService.java,1/b/1b4500767895948b131f8d1f65ebd79d39285a3d
+R
+"src/main/java/mes/model/Batch.java,7/f/7f3f6adfcfe4c093dde1da2f5b452370e901bc9b
+d
+4src/main/java/mes/datasource/PostgresDatasource.java,b/7/b7b244adc625d5fe967c703c64ff6f724a48ef47
+`
+0src/main/java/mes/dao/LiveDataAccessService.java,b/8/b88247a2d539f9be5c564146f4b3eacb1d286749
+R
+"src/main/java/mes/dao/LiveDao.java,3/2/3249f14bf17e0e60392bfa264602038ac802d873
+a
+1src/main/java/mes/dao/BatchDataAccessService.java,2/9/294b3e365fe024c25982583438277585c5c4ab0e
+S
+#src/main/java/mes/dao/BatchDao.java,e/0/e037293ee0a43847c2afb18b4ec9b7918591ea03
+X
+(src/main/java/mes/api/WebController.java,6/d/6d7130570ac4c69a1dc1af51f59b5036d8279f3f
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+U
+%src/main/java/mes/model/ConfigUa.java,0/1/0101f9bee7527d7eeda0c01be0de125c0aacfffa
+Z
+*src/main/java/mes/api/BatchController.java,3/5/3563097930d2914c30ec9f724899601f97729cc7
+`
+0src/main/java/mes/api/InputValuesController.java,e/1/e1e12905ef9ad10688a961cabdd5bfdae7932fc8
+Y
+)src/main/java/mes/api/LiveController.java,5/f/5fe930559416057a09012c78bd8b4632817a59c8
+Q
+!src/main/java/mes/model/Live.java,a/c/ac3e315c19dc61a7dd0c6df970cc47f609f47291

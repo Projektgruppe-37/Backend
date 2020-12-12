@@ -209,16 +209,23 @@ public class Live extends ConfigUa {
     }
 
     public int getAcceptedProducts() {
+        try {
 
-        acceptedProducts = produced - defectProducts;
+            NodeId nodeId = new NodeId(6, "::Program:product.good");
+            DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
+            Variant variant = dataValue.getValue();
+            acceptedProducts = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return acceptedProducts;
     }
-
     public int getDefectProducts() {
 
         try {
 
-            NodeId nodeId = new NodeId(6, "::Program:Cube.Admin.ProdDefectiveCount");
+            NodeId nodeId = new NodeId(6, "::Program:product.bad");
             DataValue dataValue = ConfigUa.client.readValue(0, TimestampsToReturn.Both, nodeId).get();
             Variant variant = dataValue.getValue();
             defectProducts = Integer.parseUnsignedInt(String.valueOf(variant.getValue()));

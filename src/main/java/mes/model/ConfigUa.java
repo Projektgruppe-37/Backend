@@ -11,11 +11,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-// In order to run the application with ARSim instead of the physical machine do following:
-// 1. Comment out line 31 and 32 using "//".
-// 2. Remove comment declarations on line 28 and 29.
-// 3. Navigate to application.yml located in the resources package.
-
 @Component
 public class ConfigUa {
     public static OpcUaClient client;
@@ -25,11 +20,8 @@ public class ConfigUa {
 
         try {
 
-            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
-            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
-
-//            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
-//            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.122", 4840);
+            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.122", 4840);
 
             OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
             cfg.setEndpoint(configPoint);
