@@ -1,9 +1,9 @@
-# Intitial information
+# How to run the BreweryMES (WINDOWS)
 
-The brewery system BreweryMes can be run in two different ways. One connected directly with the physical simulator at SDU or remotely with the ARSim simulator.
-Below informations regarding running the application is shown:
+The brewery system BreweryMES can be run in two different ways. One connected directly with the physical simulator at SDU or remotely with the ARSim simulator. The application requires Docker to run, ***SO MAKE SURE THAT DOCKER IS RUNNING ON YOUR PC BEFORE RUNNING THE APPLICATION***
+Below informations regarding running the application is shown.  
 
-## Running with the physical machine
+## Running with the physical machine (WINDOWS)
 1. Open a commandline, terminal, bash etc. from the project folder *BreweryMES* and type in following command:
    - `cd src/main/java/mes && docker-compose -f docker-compose1.yml build && docker-compose -f docker-compose1.yml up`
 2. When the following error message is shown, close the commandline, terminal, bash etc.:
@@ -20,7 +20,7 @@ Below informations regarding running the application is shown:
    
 ### IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!  
    
-## Running remotely with ARSim simulator
+## Running remotely with ARSim simulator (WINDOWS)
 
 1. Start ARSim
 2. Open a commandline, terminal, bash etc. from the project folder *BreweryMES* and type in following command:
