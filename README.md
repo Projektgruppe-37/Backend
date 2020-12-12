@@ -1,6 +1,6 @@
 # Intitial information
 
-The brewery system BreweryMes can be run in two different ways. One connected directly with the physical simulation at SDU or remotely with the ARSim simulator.
+The brewery system BreweryMes can be run in two different ways. One connected directly with the physical simulator at SDU or remotely with the ARSim simulator.
 Below informations regarding running the application is shown:
 
 ## Running with the physical machine
@@ -18,8 +18,7 @@ Below informations regarding running the application is shown:
 7. Open a web browser (we suggest Google Chrome) and enter into address field:
    - localhost:8080
    
-### IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!
-   
+### IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!  
    
 ## Running remotely with ARSim simulator
 
