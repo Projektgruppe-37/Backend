@@ -37,3 +37,11 @@ Y
 )src/main/java/mes/api/LiveController.java,5/f/5fe930559416057a09012c78bd8b4632817a59c8
 Q
 !src/main/java/mes/model/Live.java,a/c/ac3e315c19dc61a7dd0c6df970cc47f609f47291
+T
+$src/main/java/mes/docker-compose.yml,0/f/0f1746d3dff877430c8228a2e4423c67b57ecb87
+U
+%src/main/java/mes/docker-compose1.yml,6/e/6e150d55adb3dcc9a7f52aa02b1b3f973fa9cf97
+V
+&src/main/java/mes/DemoApplication.java,1/c/1cc1fab314ef78515e20d022215b9201885a417c
+M
+src/main/java/mes/Dockerfile1,4/6/46a43db3cde08a1fcab24263556cf58eb03bae51

@@ -1,11 +1,12 @@
 
-S	java:S106W"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-S	java:S106H"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-W	java:S107"BConstructor has 12 parameters, which is greater than 7 authorized.(€Ğ·
-T	java:S106ª"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-T	java:S106¹"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-T	java:S106‹"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-S	java:S106u"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-T	java:S106š"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-T	java:S106É"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+T	java:S106“"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
 S	java:S106f"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+[	java:S106„"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8”¼ô¾å.
+W	java:S107"BConstructor has 12 parameters, which is greater than 7 authorized.(€Ğ·
+T	java:S106¢"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+S	java:S106u"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+S	java:S106H"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+S	java:S106W"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+T	java:S106Á"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+T	java:S106²"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+T	java:S106Ñ"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
