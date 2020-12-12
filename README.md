@@ -4,37 +4,29 @@ The brewery system BreweryMes can be run in two different ways. One connected di
 Below informations regarding running the application is shown:
 
 ## Running with the physical machine
-1. Connect your WIFI to the brewery machine:
+1. Open a commandline, terminal, bash etc. from the project folder *BreweryMES* and type in following command:
+   - `cd src/main/java/mes && docker-compose -f docker-compose1.yml build && docker-compose -f docker-compose1.yml up`
+2. When the following error message is shown, close the commandline, terminal, bash etc.:
+   - `UaException: status=Bad_Timeout, message=io.netty.channel.ConnectTimeoutException: connection timed out: /192.168.0.122:4840`
+3. Navigate to *BreweryMES/src/main/java/mes* and open **Dockerfile1** in a texteditor.
+4. Remove the hashtag (#) from line 3, then save and close the document.
+5. Connect your WIFI to the brewery machine:
    - WIFI name: **brCubeSoftwareTechnology**
    - Password: **acoposp3**
-1. Navigate to the *BreweryMES/src/main/java/mes* folder where the **BreweryMES-1.0-SNAPSHOT.jar**, **Dockerfile** and **docker-compose.yml** is located.
-2. Open a commandline, terminal, bash etc from this folder.
-3. Run the following command:   
-   - `docker-compose build && docker-compose up`
-4. Open a web browser (we suggest Google Chrome or Firefox) and enter into address field:
+6. Open a commandline, terminal, bash etc. from the current folder (*BreweryMES/src/main/java/mes*) and run following command:
+   - `docker-compose -f docker-compose1.yml build && docker-compose -f docker-compose1.yml up`
+7. Open a web browser (we suggest Google Chrome) and enter into address field:
    - localhost:8080
    
 ### IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!
    
    
 ## Running remotely with ARSim simulator
+
 1. Start ARSim
-2. Create a PostgresSQL database with following credentials
-   - User: postgres
-   - Password: root
-   - Database name: beerMachine
-3. Navigate into the application folders:
-   - In *BreweryMES/src/main/java/mes/model* open **ConfigUa.java**
-     - Comment out line 31 and 32 using "//".
-     - Remove comment declarations on line 28 and 29.
-   - In *BreweryMES/src/main/resources* open **application.yml**
-     - Comment out line 8 using "#".
-     - Remove comment declaration on line 7.
- 4. Navigate to *BreweryMES/src/main/java/mes*
-    - Open a commandline, terminal, bash etc from this folder.
-    - Run the following command:
-      - `java -jar BreweryMES-1.0-SNAPSHOT.jar`
- 5. Open a web browser (we suggest Google Chrome or Firefox) and enter into address field:
-    - localhost:8080
-    
- ### IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!
+2. Open a commandline, terminal, bash etc. from the project folder *BreweryMES* and type in following command:
+   - `cd src/main/java/mes && docker-compose build && docker-compose up`
+3. Open a web browser (we suggest Google Chrome) and enter into address field:
+   - localhost:8080
+   
+### IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!
