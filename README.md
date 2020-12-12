@@ -10,7 +10,7 @@ The brewery system BreweryMES can be run in two different ways. One way is to co
 3. Open a web browser (we suggest Google Chrome) and enter into address field:
    - localhost:8080   
    
-### IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!
+### ***IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!***
   
     
 ## Running with the physical machine (Windows, Linux, Mac)
@@ -31,6 +31,6 @@ The physical brewery simulator requires to be connected to a specific WIFI for t
 7. Open a web browser (we suggest Google Chrome) and enter into address field:
    - localhost:8080
    
-### IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!  
+### ***IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!***  
    
 
