@@ -43,7 +43,7 @@ The physical brewery simulator requires to be connected to a specific WIFI for t
 ## Running the application WITHOUT Docker through an IDE (Windows, Linux, Mac)
 In able to run the simulation without Docker, some initial installations are required. Running through an IDE gives the opportunity to see the database entries, which is lagging from the Docker launched parts, where the database is there, and it will get inserted and read from, but there is no way to actaully see the database.
 
-1. Install and create a PostgreSQL account and create a database, the following credentiels should be used:
+1. Install PostgreSQL and create a database with the following credentiels:
    - User = postgres
    - Password = root
    - Database = beerMachine
