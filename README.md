@@ -43,7 +43,6 @@ The physical brewery simulator requires to be connected to a specific WIFI for t
 ## Running the application WITHOUT Docker through an IDE (Windows, Linux, Mac)
 In able to run the simulation without Docker, some initial installations are required. Running through an IDE gives the opportunity to see the database entries, which is lagging from the Docker launched parts, where the database is there, and it will get inserted and read from, but there is no way to actaully see the database.
 
-# If you does not have PostgreSQL installed:
 1. Create a PostgreSQL account and create a database, the following credentiels should be used:
    - User = postgres
    - Password = root
@@ -59,6 +58,3 @@ In able to run the simulation without Docker, some initial installations are req
     - Run **BreweryMES-1.0-PHYSICAL-IDE.jar** from the IDE.
 7. Open a web browser (we suggest Google Chrome) and enter into address field:
    - localhost:8080
-    
-   
-
