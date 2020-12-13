@@ -59,4 +59,4 @@ In able to run the simulation without Docker, some initial installations are req
 7. Open a web browser (we suggest Google Chrome) and enter into address field:
    - localhost:8080
    
-***If an error that port 8080 is blocked when running in the IDE, go to "run" (windows button + r) type "services.msc" and clik "OK". Locate "PEM HTTPD" left-click and press "Stop". Then rerun the .jar in the IDE.***
+***If an error that port 8080 is blocked when running in the IDE is shown, go to "run" (windows button + r) type "services.msc" and clik "OK". Locate "PEM HTTPD" left-click and press "Stop". Then rerun the .jar in the IDE.***
