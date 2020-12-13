@@ -2,7 +2,7 @@
 
 The brewery system BreweryMES can be run in three different ways. One way is to connect directly to the physical simulator at SDU campus, another is to connect remotely with the ARsim simulator. The final way is to run the application directly through an IDE. The application uses Docker to launch, but it is also possible to run through an IDE. The ARSim simulator only works properly on Windows OS, so the launching of the application through Docker, is only implemented to work with Windows OS for the ARSim simulator. When connected to the physical machine, the application can be run in whatever OS the user decides. The same applies for running through an IDE.
 
-### ***IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!***  
+### ***IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING SIMULATIONS WHEN ENTERING THE MES'S WEBSITE!!!***  
 
 If any problems running the application:
  - Stop and remove all Docker containers and images
