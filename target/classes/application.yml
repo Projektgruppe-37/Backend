@@ -1,6 +1,8 @@
 app:
   datasource:
-    jdbc-url: jdbc:postgresql://db:5432/beerMachine
+    jdbc-url: jdbc:postgresql://localhost:5432/beerMachine
+# Used when launching with Docker
+#    jdbc-url: jdbc:postgresql://db:5432/beerMachine
     username: postgres
     password: root
     poll-size: 100

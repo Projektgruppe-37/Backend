@@ -19,10 +19,15 @@ public class ConfigUa {
     public void configUa() {
 
         try {
+// Used when running the application with ARSim launching with main or BreweryMES-1.0-SIMUALATION-IDE.jar
+            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
 
-            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://docker.for.win.localhost:4840").get();
-            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "docker.for.win.localhost", 4840);
+// Used when running the application with ARSim launching through Docker
+//            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://docker.for.win.localhost:4840").get();
+//            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "docker.for.win.localhost", 4840);
 
+// USed when running the physical simulator launching through Docker and main or BreweryMES-1.0-PHYSICAL-IDE.jar
 //            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
 //            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.122", 4840);
 
