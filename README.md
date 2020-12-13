@@ -1,21 +1,29 @@
 # How to run the BreweryMES
 
-The brewery system BreweryMES can be run in two different ways. One way is to connect directly to the physical simulator at SDU campus, the other is to connect remotely with the ARSim simulator. The application requires Docker to run. The ARSim simulator only works properly on Windows OS, so the launching of the application through Docker, is only implemented to work with Windows OS for the ARSim simulator. When connected to the physical machine, the application can be run in whatever OS the user decides. ***MAKE SURE THAT DOCKER IS RUNNING ON YOUR PC BEFORE RUNNING THE APPLICATION***
+The brewery system BreweryMES can be run in three different ways. One way is to connect directly to the physical simulator at SDU campus, another is to connect remotely with the ARsim simulator. The final way is to run the application directly through an IDE. The application uses Docker to launch, but it is also possible to run through an IDE. The ARSim simulator only works properly on Windows OS, so the launching of the application through Docker, is only implemented to work with Windows OS for the ARSim simulator. When connected to the physical machine, the application can be run in whatever OS the user decides. The same applies for running through an IDE.
 
-## Running remotely with ARSim simulator (Windows)
+### ***IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!***  
 
-1. Start ARSim
+If any problems running the application:
+ - Stop and remove all Docker containers and images
+ - Make sure all run processes are killed in the IDE
+
+## Running the application with ARsim simulator through docker (Windows)
+
+***MAKE SURE THAT DOCKER IS RUNNING ON YOUR PC BEFORE RUNNING THE APPLICATION***
+
+1. Start ARsim
 2. Open a command line, terminal, bash etc. from the project folder *BreweryMES* and type in following command:
    - `cd src/main/java/mes && docker-compose build && docker-compose up`
 3. Open a web browser (we suggest Google Chrome) and enter into address field:
    - localhost:8080   
-   
-### ***IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!***
-  
+ 
     
-## Running with the physical machine (Windows, Linux, Mac)
+## Running the application with the physical machine through Docker (Windows, Linux, Mac)
 The physical brewery simulator requires to be connected to a specific WIFI for the machine. This WIFI is not connected to the internet (or at least have a very low speed). Because of this, a few extra steps have to be done in order to run the application with Docker.
 **Be aware that localhost:8080 takes a long time to load in when connected to the physical machine. Be patient, the page will load and it will not be slow when first loaded.**
+
+***MAKE SURE THAT DOCKER IS RUNNING ON YOUR PC BEFORE RUNNING THE APPLICATION***
 
 1. Open a command line, terminal, bash etc. from the project folder *BreweryMES* and type in following command:
    - `cd src/main/java/mes && docker-compose -f docker-compose1.yml build && docker-compose -f docker-compose1.yml up`
@@ -30,7 +38,27 @@ The physical brewery simulator requires to be connected to a specific WIFI for t
    - `docker-compose -f docker-compose1.yml build && docker-compose -f docker-compose1.yml up`
 7. Open a web browser (we suggest Google Chrome) and enter into address field:
    - localhost:8080
-   
-### ***IMPORTANT!! ALWAYS PRESS 'RESET' BEFORE RUNNING THE MES WHEN ENTERING THE WEBSITE!!!***  
+
+
+## Running the application WITHOUT Docker through an IDE (Windows, Linux, Mac)
+In able to run the simulation without Docker, some initial installations are required. Running through an IDE gives the opportunity to see the database entries, which is lagging from the Docker launched parts, where the database is there, and it will get inserted and read from, but there is no way to actaully see the database.
+
+# If you does not have PostgreSQL installed:
+1. Create a PostgreSQL account and create a database, the following credentiels should be used:
+   - User = postgres
+   - Password = root
+   - Database = beerMachine
+2. Import the BrewerMES application to an IDE and connect the created database
+   * If launching the application with ARSim:
+      - Launch ARsim
+      - Run **BreweryMES-1.0-SIMULATION-IDE.jar** from the IDE.
+   * If launching the application connected with physical simulator:
+      - Connect to the WIFI:
+        - WIFI name: **brCubeSoftwareTechnology**
+        - Password: **acoposp3**
+    - Run **BreweryMES-1.0-PHYSICAL-IDE.jar** from the IDE.
+7. Open a web browser (we suggest Google Chrome) and enter into address field:
+   - localhost:8080
+    
    
 
