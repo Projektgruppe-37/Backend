@@ -8,7 +8,7 @@ If any problems running the application:
  - Stop and remove all Docker containers and images
  - Make sure all run processes are killed in the IDE
 
-## Running the application with ARsim simulator through docker (Windows)
+## Running the application with ARsim simulator through Docker (Windows)
 
 ***MAKE SURE THAT DOCKER IS RUNNING ON YOUR PC BEFORE RUNNING THE APPLICATION***
 
