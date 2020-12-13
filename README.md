@@ -58,3 +58,5 @@ In able to run the simulation without Docker, some initial installations are req
     - Run **BreweryMES-1.0-PHYSICAL-IDE.jar** from the IDE.
 7. Open a web browser (we suggest Google Chrome) and enter into address field:
    - localhost:8080
+   
+   ***If an error that port 8080 is blocked when running the *BreweryMES-1.0-SIMULATION-IDE.jar, go to "run" (windows button + r) type "services.msc" and clik "OK", locate "PEM HTTPD" left-click and press "Stop"***
