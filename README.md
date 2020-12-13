@@ -48,10 +48,10 @@ In order to run the simulation without Docker, some initial installations are re
    - Password = root
    - Database = beerMachine
 2. Import the BrewerMES application to an IDE and connect the created database
-   * OPTION 1: Launching the application with ARSim:
+   * *OPTION 1:* Launching the application with ARSim:
       - Launch ARsim
       - Run **BreweryMES-1.0-SIMULATION-IDE.jar** from the IDE.
-   * OPTION 2: Launching the application connected with physical simulator:
+   * *OPTION 2:* Launching the application connected with physical simulator:
       - Connect to the WIFI:
         - WIFI name: **brCubeSoftwareTechnology**
         - Password: **acoposp3**
